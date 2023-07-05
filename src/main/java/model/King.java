@@ -20,7 +20,6 @@ public class King extends Piece{
     @Override
     public ArrayList<Square> possiblePos(){
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        possibleMoves.clear();
         for (Square square : Board.getSquares()){
             for (int i = -1; i <= 1; i++) {
                 if (!square.isOccupied()) {

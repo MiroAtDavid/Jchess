@@ -391,8 +391,10 @@ public class TestGraph {
             System.out.print("\n" + s.getSquareName() + " is occupied: ");
             System.out.print(s.isOccupied());
         }
-        System.out.println("\n" + pawnW1.move().getSquareName());
+        System.out.println("\n" + pawnW5.move().getSquareName());
         System.out.println("\n" + pawnB4.move().getSquareName());
+        System.out.println("\n"  + bishopw2.move().getSquareName());
+        System.out.println("\n"  + bishopw2.move().getSquareName());
 
         for (Square s : Board.getSquares()){
             System.out.print("\n" + s.getSquareName() + " is occupied: ");

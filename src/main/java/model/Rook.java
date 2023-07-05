@@ -19,7 +19,6 @@ public class Rook extends Piece {
     @Override
     public ArrayList<Square> possiblePos() {
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        possibleMoves.clear();
         possibleMoves.addAll(possibleNorth());
         possibleMoves.addAll(possibleSouth());
         possibleMoves.addAll(possibleEast());
@@ -29,34 +28,36 @@ public class Rook extends Piece {
 
     public ArrayList<Square> possibleNorth(){
         ArrayList<Square> norhtList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() == getCurrentPositionSquare().getCol()) {
-                if (square.getRow() + counter == getCurrentPositionSquare().getRow()) {
-                    if (!square.isOccupied())
-                        norhtList.add(square);
-                    else
-                        break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol()) {
+                    if (square.getRow() + i == getCurrentPositionSquare().getRow()) {
+                        if (!square.isOccupied())
+                            norhtList.add(square);
+                        else
+                            break outerloop;
+                    }
                 }
             }
-            counter++;
         }
         return norhtList;
     }
 
     public ArrayList<Square> possibleSouth(){
         ArrayList<Square> southList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() == getCurrentPositionSquare().getCol()) {
-                if (square.getRow() - counter == getCurrentPositionSquare().getRow()) {
-                    if (!square.isOccupied())
-                        southList.add(square);
-                    else
-                        break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol()) {
+                    if (square.getRow() - i == getCurrentPositionSquare().getRow()) {
+                        if (!square.isOccupied())
+                            southList.add(square);
+                        else
+                            break outerloop;
+                    }
                 }
             }
-            counter++;
         }
 
         return southList;
@@ -64,34 +65,36 @@ public class Rook extends Piece {
 
     public ArrayList<Square> possibleEast(){
         ArrayList<Square> eastList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getRow() == getCurrentPositionSquare().getRow()) {
-                if (square.getCol() + counter == getCurrentPositionSquare().getCol()) {
-                    if (!square.isOccupied())
-                        eastList.add(square);
-                    else
-                        break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getRow() == getCurrentPositionSquare().getRow()) {
+                    if (square.getCol() + i == getCurrentPositionSquare().getCol()) {
+                        if (!square.isOccupied())
+                            eastList.add(square);
+                        else
+                            break outerloop;
+                    }
                 }
             }
-            counter++;
         }
         return eastList;
     }
 
     public ArrayList<Square> possibleWest(){
         ArrayList<Square> westList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getRow() == getCurrentPositionSquare().getRow()) {
-                if (square.getCol() - counter == getCurrentPositionSquare().getCol()) {
-                    if (!square.isOccupied())
-                        westList.add(square);
-                    else
-                        break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getRow() == getCurrentPositionSquare().getRow()) {
+                    if (square.getCol() - i == getCurrentPositionSquare().getCol()) {
+                        if (!square.isOccupied())
+                            westList.add(square);
+                        else
+                            break outerloop;
+                    }
                 }
             }
-            counter++;
         }
         return westList;
     }

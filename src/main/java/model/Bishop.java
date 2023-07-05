@@ -19,7 +19,6 @@ public class Bishop extends Piece {
     @Override
     public ArrayList<Square> possiblePos(){
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        possibleMoves.clear();
         possibleMoves.addAll(possibleNorthWest());
         possibleMoves.addAll(possibleNorthEast());
         possibleMoves.addAll(possibleSouthWest());
@@ -28,58 +27,62 @@ public class Bishop extends Piece {
     }
     public ArrayList<Square> possibleNorthWest(){
         ArrayList<Square> northWestList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() - counter == getCurrentPositionSquare().getCol() && square.getRow() + counter == getCurrentPositionSquare().getRow()) {
-                if (!square.isOccupied())
-                    northWestList.add(square);
-                else
-                    break;
+        outerloop:
+        for (int i = 1; i < 8; i++) {
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
+                    if (!square.isOccupied())
+                        northWestList.add(square);
+                    else
+                        break outerloop;
                 }
-            counter++;
+            }
         }
         return northWestList;
     }
     public ArrayList<Square> possibleNorthEast(){
         ArrayList<Square> northEastList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() + counter == getCurrentPositionSquare().getCol() && square.getRow() + counter == getCurrentPositionSquare().getRow()) {
-                if (!square.isOccupied())
-                    northEastList.add(square);
-                else
-                    break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
+                    if (!square.isOccupied())
+                        northEastList.add(square);
+                    else
+                        break outerloop;
+                }
             }
-            counter++;
         }
         return northEastList;
     }
 
     public ArrayList<Square> possibleSouthWest(){
         ArrayList<Square> southWestList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() - counter == getCurrentPositionSquare().getCol() && square.getRow() - counter == getCurrentPositionSquare().getRow()) {
-                if (!square.isOccupied())
-                    southWestList.add(square);
-                else
-                    break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
+                    if (!square.isOccupied())
+                        southWestList.add(square);
+                    else
+                        break outerloop;
+                }
             }
-            counter++;
         }
         return southWestList;
     }
     public ArrayList<Square> possibleSouthEast(){
         ArrayList<Square> southEastList = new ArrayList<>();
-        int counter = 1;
-        for (Square square : Board.getSquares()){
-            if (square.getCol() + counter == getCurrentPositionSquare().getCol() && square.getRow() - counter == getCurrentPositionSquare().getRow()) {
-                if (!square.isOccupied())
-                    southEastList.add(square);
-                else
-                    break;
+        outerloop:
+        for (int i = 1; i < 8; i++){
+            for (Square square : Board.getSquares()) {
+                if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
+                    if (!square.isOccupied())
+                        southEastList.add(square);
+                    else
+                        break outerloop;
+                }
             }
-            counter++;
         }
         return southEastList;
     }

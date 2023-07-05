@@ -18,7 +18,7 @@ public class Pawn extends Piece {
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos() { // TODO züge für bauern funzn nicht !!!!!!!!!!!!!!!!!!!!!!!!!
+    public ArrayList<Square> possiblePos() {
         ArrayList<Square> possibleMoves = new ArrayList<>();
         if (!this.getPieceName().contains("Black"))
             possibleMoves.addAll(possibleNorth());
