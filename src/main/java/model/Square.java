@@ -13,7 +13,6 @@ public class Square {
     private Rectangle rectangle;
     private Piece piece;
     private boolean occupied;
-    private final ArrayList<Kante> kanten;
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
 
@@ -23,8 +22,7 @@ public class Square {
         setCol(col);
         setColor(color);
         setRectangle(rectangle);
-        //setPiece(piece);
-        kanten = new ArrayList<>();
+
     }
 
     // Getter ----------------------------------------------------------------------------------------------------------
@@ -43,16 +41,13 @@ public class Square {
     public Rectangle getRectangle() {
         return rectangle;
     }
-
     public Piece getPiece() {
         return piece;
     }
     public boolean isOccupied() {
         return this.occupied;
     }
-    public ArrayList<Kante> getKanten(){
-        return kanten;
-    }
+
 
     // Setter ----------------------------------------------------------------------------------------------------------
     public void setSquareName(String squareName) throws BoardException {
@@ -82,7 +77,6 @@ public class Square {
     public void setRectangle(Rectangle rectangle) {
             this.rectangle = rectangle;
     }
-
     public void setPiece(Piece piece) throws BoardException {
             if (piece != null)
                 this.piece = piece;
@@ -94,15 +88,7 @@ public class Square {
     }
 
     // Other -----------------------------------------------------------------------------------------------------------
-    public void kanteHinzufuegen(Square endSquare, int gewicht){
-        kanten.add(new Kante(this, endSquare, gewicht));
-    }
-    public void kanteEntfernen(Square endSquare){
-        for (Kante kante : kanten) {
-            if (kante.getEnde().equals(endSquare))
-                kanten.remove(kante);
-        }
-   }
+
     // toString---------------------------------------------------------------------------------------------------------
     public String toString(boolean showWeight) {
         return "";

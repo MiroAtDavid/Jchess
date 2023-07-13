@@ -12,8 +12,8 @@ public class Qeen extends Piece{
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
 
-    public Qeen(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
-        super(pieceName, pieceValue,currentPositionSquare);
+    public Qeen(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
+        super(pieceName, pieceValue,currentPositionSquare, color);
     }
 
     @Override

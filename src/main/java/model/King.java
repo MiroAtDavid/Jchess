@@ -12,8 +12,8 @@ public class King extends Piece{
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
 
-    public King(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
-        super(pieceName, pieceValue,currentPositionSquare);
+    public King(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
+        super(pieceName, pieceValue,currentPositionSquare, color);
     }
 
     // Methods ---------------------------------------------------------------------------------------------------------

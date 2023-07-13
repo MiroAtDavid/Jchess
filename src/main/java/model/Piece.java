@@ -3,17 +3,20 @@ package model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public abstract class Piece {
     private String pieceName;
     private int pieceValue;
     private Square currentPositionSquare;
+
+    private String color;
+
     private Image image;
     private ImageView imageView;
 
     // Knostruktor -----------------------------------------------------------------------------------------------------
-
     public Piece(String pieceName, int pieceValue, Square currentPositionSquare, ImageView imageView, Image image) throws BoardException {
         setPieceName(pieceName);
         setPieceValue(pieceValue);
@@ -22,13 +25,18 @@ public abstract class Piece {
         setImageView(imageView);
     }
 
-    public Piece(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
+    public Piece(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
         setPieceName(pieceName);
         setPieceValue(pieceValue);
         setCurrentPositionSquare(currentPositionSquare);
+        setColor(color);
     }
 
     // Getter ----------------------------------------------------------------------------------------------------------
+
+    public String getColor() {
+        return color;
+    }
     public String getPieceName() {
         return pieceName;
     }
@@ -44,8 +52,11 @@ public abstract class Piece {
     public ImageView getImageView(){
         return imageView;
     }
-
     // Setter ----------------------------------------------------------------------------------------------------------
+
+    public void setColor(String color) {
+        this.color = color;
+    }
     public void setPieceName(String pieceName) throws BoardException {
         if (pieceName != null)
             this.pieceName = pieceName;

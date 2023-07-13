@@ -31,7 +31,7 @@ public class RootBorderPane extends BorderPane {
 	private Image image;
 	private Label label;
 	private Button buttonMove;
-	private Board chessboard = TestGraph.testGraphEins();
+	private Board chessboard = TestBoard.initBoard();
 	private Player playerOne, playerTwo;
 	private ArrayList<Piece> p1Piece, p2Piece;
 
@@ -245,7 +245,7 @@ public class RootBorderPane extends BorderPane {
 
 
 
-		Board board = new Board(true);
+		Board board = new Board();
 		flowPanetop = new FlowPane();
 			flowPanetop.setMinHeight(100);
 		vBoxLeft = new VBox();
@@ -327,7 +327,7 @@ public class RootBorderPane extends BorderPane {
 			p2Piece.add(piece);
 	}
 	public void drawChessBoard() throws BoardException {
-		Board chessboard = TestGraph.testGraphEins();
+		Board chessboard = TestBoard.initBoard();
 		groupChessBoard = new Group();
 
 		int counter = 0;

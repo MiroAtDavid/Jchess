@@ -11,8 +11,8 @@ public class Bishop extends Piece {
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
 
-    public Bishop(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
-        super(pieceName, pieceValue,currentPositionSquare);
+    public Bishop(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
+        super(pieceName, pieceValue,currentPositionSquare, color);
     }
 
     // Methods ---------------------------------------------------------------------------------------------------------

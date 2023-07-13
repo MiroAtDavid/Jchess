@@ -12,17 +12,17 @@ public class Pawn extends Piece {
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
 
-    public Pawn(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
-        super(pieceName, pieceValue,currentPositionSquare);
+    public Pawn(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
+        super(pieceName, pieceValue,currentPositionSquare, color);
     }
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
     public ArrayList<Square> possiblePos() {
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        if (!this.getPieceName().contains("Black"))
+        if (!this.getColor().equals("black"))
             possibleMoves.addAll(possibleNorth());
-        if (this.getPieceName().contains("Black"))
+        if (this.getColor().equals("black"))
             possibleMoves.addAll(possibleSouth());
         return possibleMoves;
     }

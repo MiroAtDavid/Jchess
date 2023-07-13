@@ -12,8 +12,8 @@ public class Rook extends Piece {
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
 
-    public Rook(String pieceName, int pieceValue, Square currentPositionSquare) throws BoardException {
-        super(pieceName, pieceValue, currentPositionSquare);
+    public Rook(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
+        super(pieceName, pieceValue,currentPositionSquare, color);
     }
 
     @Override

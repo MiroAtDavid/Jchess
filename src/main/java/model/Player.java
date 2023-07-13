@@ -66,11 +66,11 @@ public class Player {
         if (valueStrength > Integer.MIN_VALUE && valueStrength < Integer.MAX_VALUE){
             if (color.equals("white")) {
                 for (Piece p : pieces) {
-                    valueStrength = +p.getPieceValue();
+                    valueStrength =+ p.getPieceValue();
                 }
             } else if (color.equals("black")) {
                 for (Piece p : pieces) {
-                    valueStrength = -p.getPieceValue();
+                    valueStrength =- p.getPieceValue();
                 }
             }
         } else
