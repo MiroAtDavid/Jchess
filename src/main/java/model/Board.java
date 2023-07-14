@@ -29,14 +29,16 @@ public class Board {
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
         sb.append("---------------------------------\n");
-        for (int row = 1; row < 9; row ++){
-            for (Square s : Board.getSquares()) {
-                if (s.getRow() == row) {
-                    if (!s.isOccupied())
-                        sb.append("| " + "  ");
-                    else
-                        sb.append("| ").append(s.getPiece().getPieceName()).append(" ");
+        for (int row = 8; row > 0; row --){
+            for (int col = 1; col < 9; col++) {
+                for (Square s : Board.getSquares()) {
+                    if (s.getRow() == row && s.getCol() == col) {
+                        if (!s.isOccupied())
+                            sb.append("| " + "  ");
+                        else
+                            sb.append("| ").append(s.getPiece().getPieceName()).append(" ");
 
+                    }
                 }
             }
             sb.append("|");

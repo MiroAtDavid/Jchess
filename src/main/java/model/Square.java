@@ -88,7 +88,13 @@ public class Square {
     }
 
     // Other -----------------------------------------------------------------------------------------------------------
-
+    public void removePiece() throws BoardException {
+        if (getPiece() != null) {
+            setPiece(null);
+        } else {
+            throw new BoardException("removePiece(): ");
+        }
+    }
     // toString---------------------------------------------------------------------------------------------------------
     public String toString(boolean showWeight) {
         return "";

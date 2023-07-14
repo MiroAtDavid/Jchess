@@ -31,10 +31,12 @@ public class Bishop extends Piece {
         for (int i = 1; i < 8; i++) {
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()) {
                         northWestList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        northWestList.add(square);
                         break outerloop;
+                    }
                 }
             }
         }
@@ -46,10 +48,12 @@ public class Bishop extends Piece {
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()) {
                         northEastList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        northEastList.add(square);
                         break outerloop;
+                    }
                 }
             }
         }

@@ -10,9 +10,7 @@ public abstract class Piece {
     private String pieceName;
     private int pieceValue;
     private Square currentPositionSquare;
-
     private String color;
-
     private Image image;
     private ImageView imageView;
 
@@ -104,9 +102,45 @@ public abstract class Piece {
             return null;
         }
         Square newPositionSquare = possiblePos().get(randomWithinPossibleMove);
+        if (newPositionSquare.isOccupied()){
+            captureLogic(newPositionSquare);
+        }
         newPositionSquare.setPiece(this);
         this.setCurrentPositionSquare(newPositionSquare);
         return newPositionSquare;
+    }
+
+    private void captureLogic(Square newPositionSquare) throws BoardException {
+        if (!this.getColor().equals(newPositionSquare.getPiece().getColor())){
+            newPositionSquare.removePiece();
+            Player.getPieces().remove(newPositionSquare.getPiece());
+        } else {
+            throw new BoardException("captureLogic(): Can't capture pieces of same color!");
+        }
+
+    }
+
+    public Square userMove(String userTargetPosition) throws BoardException {
+        // TODO - moving a piece to a not allowed square doesn't throw an error !!!!!!!!!!!!!!
+        // TODO - move after,  the piece is still at the same place !!!!!!!!!!!!!!!!
+        // TODO - capture logic doesn't differentiate between piece color
+        // TODO - neither does it remove the piece from the player pieces array
+        // TODO - capture logic only implemetented on both north bishop movement
+        // TODO - no need to go further until the current bugs are sorted out
+
+        this.getCurrentPositionSquare().setOccupied(false);
+        if (this.possiblePos().size() > 0) {
+            for (Square newPositionSquare : possiblePos()) {
+                if (newPositionSquare.getSquareName().equals(userTargetPosition)) {
+                    this.setCurrentPositionSquare(newPositionSquare);
+                    newPositionSquare.setPiece(this);
+                    return newPositionSquare;
+                }
+            }
+        } else {
+            System.out.println("No position possible for piece");
+        }
+        return null;
     }
 
 }
