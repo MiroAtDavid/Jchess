@@ -6,22 +6,23 @@ import javafx.scene.shape.Rectangle;
 import java.util.*;
 
 public class Board {
-    private static ArrayList<Square> square;
+
+    private static ArrayList<Square> squares;
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
     public Board(){
-        square = new ArrayList<>();
+        squares = new ArrayList<>();
     }
     // Getter ---- -----------------------------------------------------------------------------------------------------
     public static ArrayList<Square> getSquares(){
-        return square;
+        return squares;
     }
 
     // Other Methods ---------------------------------------------------------------------------------------------------
     public Square addSquare(String squareName, int row, int col, Color color) throws BoardException {
-        Square squareNeu = new Square(squareName, row, col, color , new Rectangle(90,90));
-        square.add(squareNeu);
-        return squareNeu;
+        Square newSquare = new Square(squareName, row, col, color , new Rectangle(90,90));
+        squares.add(newSquare);
+        return newSquare;
     }
 
     // toString --------------------------------------------------------------------------------------------------------

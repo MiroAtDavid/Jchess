@@ -21,54 +21,46 @@ public class King extends Piece{
     public ArrayList<Square> possiblePos(){
         ArrayList<Square> possibleMoves = new ArrayList<>();
         for (Square square : Board.getSquares()){
-            for (int i = -1; i <= 1; i++) {
+            for (int i = 1; i <= 1; i++) {
                 if (!square.isOccupied()) {
-
-                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol()) {
+                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol())
                         continue;
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() + i) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() + i)
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() - i) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() - i)
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol()) {
-                        continue;
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() - i) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() - i)
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() + i) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() + i)
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol()) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol())
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol()) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol())
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() + i) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() + i)
                         possibleMoves.add(square);
-                    }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() - 1) {
-                        //setPos(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() - i)
                         possibleMoves.add(square);
-                    }
+                } else if (square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())) {
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() + i)
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol() - i)
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() - i)
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol() + i)
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + i && square.getCol() == getCurrentPositionSquare().getCol())
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - i && square.getCol() == getCurrentPositionSquare().getCol())
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() + i)
+                        possibleMoves.add(square);
+                    if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol() - i)
+                        possibleMoves.add(square);
                 }
             }
-
         }
         return possibleMoves;
     }
-
-
-
 }

@@ -17,13 +17,18 @@ public class Bishop extends Piece {
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos(){
+    public ArrayList<Square> possiblePos() {
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        possibleMoves.addAll(possibleNorthWest());
-        possibleMoves.addAll(possibleNorthEast());
-        possibleMoves.addAll(possibleSouthWest());
-        possibleMoves.addAll(possibleSouthEast());
+       // if (!possibleNorthWest().isEmpty() && !possibleNorthEast().isEmpty() && !possibleSouthEast().isEmpty() && !possibleSouthWest().isEmpty()) {
+            possibleMoves.addAll(possibleNorthWest());
+            possibleMoves.addAll(possibleNorthEast());
+            possibleMoves.addAll(possibleSouthWest());
+            possibleMoves.addAll(possibleSouthEast());
+     //   } else {
+     //       System.out.println("possiblePos(): Move not possible!");
+       // }
         return possibleMoves;
+
     }
     public ArrayList<Square> possibleNorthWest(){
         ArrayList<Square> northWestList = new ArrayList<>();
@@ -35,6 +40,8 @@ public class Bishop extends Piece {
                         northWestList.add(square);
                     } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
                         northWestList.add(square);
+                        break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
                         break outerloop;
                     }
                 }
@@ -53,6 +60,8 @@ public class Bishop extends Piece {
                     } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
                         northEastList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
                     }
                 }
             }
@@ -66,25 +75,33 @@ public class Bishop extends Piece {
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         southWestList.add(square);
-                    else
+                     } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        southWestList.add(square);
                         break outerloop;
+                     } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }
         return southWestList;
     }
-    public ArrayList<Square> possibleSouthEast(){
+    public ArrayList<Square> possibleSouthEast() {
         ArrayList<Square> southEastList = new ArrayList<>();
         outerloop:
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         southEastList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        southEastList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }

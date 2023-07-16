@@ -37,10 +37,14 @@ public class Qeen extends Piece{
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() + i == getCurrentPositionSquare().getRow()) {
-                        if (!square.isOccupied())
+                        if (!square.isOccupied()){
                             norhtList.add(square);
-                        else
+                        } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                            norhtList.add(square);
                             break outerloop;
+                        } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                            break outerloop;
+                        }
                     }
                 }
             }
@@ -55,10 +59,14 @@ public class Qeen extends Piece{
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() - i == getCurrentPositionSquare().getRow()) {
-                        if (!square.isOccupied())
+                        if (!square.isOccupied()){
                             southList.add(square);
-                        else
+                        } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                            southList.add(square);
                             break outerloop;
+                        } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                            break outerloop;
+                        }
                     }
                 }
             }
@@ -74,10 +82,14 @@ public class Qeen extends Piece{
             for (Square square : Board.getSquares()) {
                 if (square.getRow() == getCurrentPositionSquare().getRow()) {
                     if (square.getCol() + i == getCurrentPositionSquare().getCol()) {
-                        if (!square.isOccupied())
+                        if (!square.isOccupied()){
                             eastList.add(square);
-                        else
+                        } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                            eastList.add(square);
                             break outerloop;
+                        } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                            break outerloop;
+                        }
                     }
                 }
             }
@@ -92,10 +104,14 @@ public class Qeen extends Piece{
             for (Square square : Board.getSquares()) {
                 if (square.getRow() == getCurrentPositionSquare().getRow()) {
                     if (square.getCol() - i == getCurrentPositionSquare().getCol()) {
-                        if (!square.isOccupied())
+                        if (!square.isOccupied()){
                             westList.add(square);
-                        else
+                        } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                            westList.add(square);
                             break outerloop;
+                        } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                            break outerloop;
+                        }
                     }
                 }
             }
@@ -109,10 +125,14 @@ public class Qeen extends Piece{
         for (int i = 1; i < 8; i++) {
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         northWestList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        northWestList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }
@@ -124,10 +144,14 @@ public class Qeen extends Piece{
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() + i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         northEastList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        northEastList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }
@@ -140,10 +164,14 @@ public class Qeen extends Piece{
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() - i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         southWestList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        southWestList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }
@@ -155,10 +183,14 @@ public class Qeen extends Piece{
         for (int i = 1; i < 8; i++){
             for (Square square : Board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol() + i && square.getRow() == getCurrentPositionSquare().getRow() - i) {
-                    if (!square.isOccupied())
+                    if (!square.isOccupied()){
                         southEastList.add(square);
-                    else
+                    } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                        southEastList.add(square);
                         break outerloop;
+                    } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
+                        break outerloop;
+                    }
                 }
             }
         }

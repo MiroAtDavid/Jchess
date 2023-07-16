@@ -20,42 +20,42 @@ public class Knight extends Piece{
     @Override
     public ArrayList<Square> possiblePos(){
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        for (Square square : Board.getSquares()){
+        for (Square square : Board.getSquares()) {
             if (!square.isOccupied()) {
-                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2)
                     possibleMoves.add(square);
-                }
-                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2) {
-                    //setPos(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2)
                     possibleMoves.add(square);
-                }
+            } else if (square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() + 2)
+                    possibleMoves.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() - 2)
+                    possibleMoves.add(square);
             }
-
         }
         return possibleMoves;
     }

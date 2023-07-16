@@ -137,8 +137,8 @@ public class TestBoard {
         ArrayList<Piece> playerOnePieces = new ArrayList<>();
         ArrayList<Piece> playerTwoPieces = new ArrayList<>();
 
-        Player playerOne = new Player("PlayerOne", playerOnePieces, 0, "White");
-        Player playerTwo = new Player("PlayerTwo", playerTwoPieces, 0, "Black");
+        Player playerOne = new Player("PlayerOne", playerOnePieces,  "White");
+        Player playerTwo = new Player("PlayerTwo", playerTwoPieces,  "Black");
 
         for (Square s : Board.getSquares()){
             if (s.getPiece() != null) {
@@ -158,62 +158,91 @@ public class TestBoard {
 
         chessBoard.print();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Your move from: ");
-        String userPieceSquare = sc.nextLine();
+//        System.out.println("\n" + pawnW5.move().getSquareName());
+//        System.out.println("\n" + pawnB4.move().getSquareName());
+//        System.out.println("\n" + pawnW4.move().getSquareName());
+//        System.out.println("\n" + knightB2.move().getSquareName());
+//        System.out.println("\n" + pawnW3.move().getSquareName());
+//        System.out.println("\n" + pawnB4.move().getSquareName());
+//        System.out.println("\n" + bishopw2.move().getSquareName());
+//        chessBoard.print();
 
-        System.out.println("Your move to: ");
-        String userPieceTargetSquare = sc.nextLine();
+        int counter = 0;
+        while (counter < 20){
+            Scanner sc = new Scanner(System.in);
 
-        for (Square s : Board.getSquares()){
-            if (userPieceSquare.equals(s.getSquareName())){
-                s.getPiece().userMove(userPieceTargetSquare);
+            System.out.println("Your move from: ");
+            String userPieceSquare = sc.nextLine();
+
+            System.out.println("Your move to: ");
+            String userPieceTargetSquare = sc.nextLine();
+
+            for (Square s : Board.getSquares()){
+                if (userPieceSquare.equals(s.getSquareName())){
+                    s.getPiece().userMove(userPieceTargetSquare);
+                }
             }
+
+            chessBoard.print();
+            counter++;
         }
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Your move from: ");
+//        String userPieceSquare = sc.nextLine();
+//
+//        System.out.println("Your move to: ");
+//        String userPieceTargetSquare = sc.nextLine();
+//
+//        for (Square s : Board.getSquares()){
+//            if (userPieceSquare.equals(s.getSquareName())){
+//                s.getPiece().userMove(userPieceTargetSquare);
+//            }
+//        }
+//
+//        chessBoard.print();
+//
+//        System.out.println("\n" + pawnB5.move().getSquareName());
+//        chessBoard.print();
+//
+//        System.out.println("Your move from: ");
+//        String userPieceSquare2 = sc.nextLine();
+//
+//        System.out.println("Your move to: ");
+//        String userPieceTargetSquare2 = sc.nextLine();
+//
+//        for (Square s : Board.getSquares()){
+//            if (userPieceSquare2.equals(s.getSquareName())){
+//                s.getPiece().userMove(userPieceTargetSquare2);
+//            }
+//        }
+//        chessBoard.print();
+//
+//        System.out.println("\n" + pawnB4.move().getSquareName());
+//        chessBoard.print();
+//
+//        System.out.println("Your move from: ");
+//        String userPieceSquare3 = sc.nextLine();
+//
+//        System.out.println("Your move to: ");
+//        String userPieceTargetSquare3 = sc.nextLine();
+//
+//        for (Square s : Board.getSquares()){
+//            if (userPieceSquare3.equals(s.getSquareName())){
+//                s.getPiece().userMove(userPieceTargetSquare3);
+//            }
+//        }
+//        chessBoard.print();
+//        System.out.println(playerOne.getStrength());
+//        System.out.println(playerTwo.getStrength());
 
-        chessBoard.print();
-
-        System.out.println("\n" + pawnB5.move().getSquareName());
-        chessBoard.print();
-
-        System.out.println("Your move from: ");
-        String userPieceSquare2 = sc.nextLine();
-
-        System.out.println("Your move to: ");
-        String userPieceTargetSquare2 = sc.nextLine();
-
-        for (Square s : Board.getSquares()){
-            if (userPieceSquare2.equals(s.getSquareName())){
-                s.getPiece().userMove(userPieceTargetSquare2);
-            }
-        }
-        chessBoard.print();
-
-        System.out.println("\n" + pawnB4.move().getSquareName());
-        chessBoard.print();
-
-        System.out.println("Your move from: ");
-        String userPieceSquare3 = sc.nextLine();
-
-        System.out.println("Your move to: ");
-        String userPieceTargetSquare3 = sc.nextLine();
-
-        for (Square s : Board.getSquares()){
-            if (userPieceSquare3.equals(s.getSquareName())){
-                s.getPiece().userMove(userPieceTargetSquare3);
-            }
-        }
-        chessBoard.print();
-        System.out.println(playerOne.getValueStrength());
-        System.out.println(playerTwo.getValueStrength());
-
-        // TODO - moving a piece to a not allowed square doesn't throw an error !!!!!!!!!!!!!!
-        // TODO - move after the piece is still at the same place !!!!!!!!!!!!!!!!
-        // TODO - capture logic doesn't differentiate between piece color
-        // TODO - neither does it remove the piece from the player pieces array
-        // TODO - capture logic only implemetented on both north bishop movement
-        // TODO - no need to go further until the current bugs are sorted out
-
+//
+//        for (Piece p : playerTwoPieces){
+//            System.out.print(p.getPieceName() + ", ");
+//        }
+//        System.out.println();
+//        for (Piece p : playerOnePieces){
+//            System.out.print(p.getPieceName() + ", ");
+//        }
         return chessBoard;
     }
 }

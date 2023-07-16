@@ -27,9 +27,9 @@ public class Pawn extends Piece {
         return possibleMoves;
     }
 
-    public ArrayList<Square> possibleNorth(){
+    public ArrayList<Square> possibleNorth() {
         ArrayList<Square> northList = new ArrayList<>();
-        for (Square square : Board.getSquares()){
+        for (Square square : Board.getSquares()) {
             if (!square.isOccupied()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() == getCurrentPositionSquare().getRow() + 1) {
@@ -39,6 +39,11 @@ public class Pawn extends Piece {
                         northList.add(square);
                     }
                 }
+            } else if (square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())) {
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
+                    northList.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
+                    northList.add(square);
             }
         }
         return northList;
@@ -56,6 +61,11 @@ public class Pawn extends Piece {
                         southList.add(square);
                     }
                 }
+            } else if (square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())) {
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() + 1)
+                    southList.add(square);
+                if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
+                    southList.add(square);
             }
         }
         return southList;

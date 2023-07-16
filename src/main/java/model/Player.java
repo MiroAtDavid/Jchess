@@ -7,16 +7,14 @@ public class Player {
     private static ArrayList<Piece> pieces;
     private int strength;
     private String color;
-    private int valueStrength;
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
 
-    public Player(String name, ArrayList<Piece> pieces, int strength, String color) {
+    public Player(String name, ArrayList<Piece> pieces, String color) {
         this.name = name;
         this.pieces = pieces;
         this.strength = strength;
         this.color = color;
-        this.valueStrength = getValueStrength();
     }
 
     // Getter ----------------------------------------------------------------------------------------------------------
@@ -33,12 +31,7 @@ public class Player {
     public static ArrayList<Piece> getPieces() {
         return pieces;
     }
-    public int getValueStrength(){
-        for (Piece p : pieces){
-            strength += p.getPieceValue();
-        }
-        return strength;
-    }
+ 
 
     // Setter ----------------------------------------------------------------------------------------------------------
     public void setPieces(ArrayList<Piece> pieces) {
@@ -51,10 +44,15 @@ public class Player {
             throw new BoardException("Player - setName: null");
     }
     public void setStrength(int strength) throws BoardException {
-        if (strength > Integer.MIN_VALUE && strength < Integer.MAX_VALUE)
+        if (strength > Integer.MIN_VALUE && strength < Integer.MAX_VALUE) {
+            for (Piece p : Player.getPieces()) {
+                strength += p.getPieceValue();
+            }
             this.strength = strength;
-        else
+        } else {
             throw new BoardException("Player - setName(): int value");
+        }
+
     }
     public void setColor(String color) throws BoardException {
         if (color != null)
@@ -62,19 +60,7 @@ public class Player {
         else
             throw new BoardException("Player - setColor(): String null");
     }
-    public void setValueStrength(int valueStrength) throws BoardException {
-        if (valueStrength > Integer.MIN_VALUE && valueStrength < Integer.MAX_VALUE){
-            if (color.equals("white")) {
-                for (Piece p : pieces) {
-                    valueStrength =+ p.getPieceValue();
-                }
-            } else if (color.equals("black")) {
-                for (Piece p : pieces) {
-                    valueStrength =- p.getPieceValue();
-                }
-            }
-        } else
-            throw new BoardException("Player - setValueStrength(): int value min-max");
+
 
     }
 
@@ -82,4 +68,3 @@ public class Player {
 
 
 
-}

@@ -237,8 +237,8 @@ public class RootBorderPane extends BorderPane {
 		addHandlers();
 	}
 	private void initComponents() throws BoardException {
-		playerOne = new Player("PlayerOne", p1Piece, 0, "White");
-		playerTwo = new Player("PlayerTwp", p2Piece, 0, "Black");
+		playerOne = new Player("PlayerOne", p1Piece,  "White");
+		playerTwo = new Player("PlayerTwp", p2Piece,  "Black");
 
 		playerOne.setPieces(p1Piece);
 		playerTwo.setPieces(p2Piece);

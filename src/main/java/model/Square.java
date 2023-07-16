@@ -78,17 +78,17 @@ public class Square {
             this.rectangle = rectangle;
     }
     public void setPiece(Piece piece) throws BoardException {
-            if (piece != null)
+           // if (piece != null)
                 this.piece = piece;
-            else
-                throw new BoardException("Square - setPiece(): null");
+//            else
+//                throw new BoardException("Square - setPiece(): null");
     }
     public void setOccupied(boolean occupied) {
             this.occupied = occupied;
     }
 
     // Other -----------------------------------------------------------------------------------------------------------
-    public void removePiece() throws BoardException {
+    public void removePiece(Piece piece) throws BoardException {
         if (getPiece() != null) {
             setPiece(null);
         } else {
