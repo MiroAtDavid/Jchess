@@ -17,14 +17,17 @@ public class Board {
     public static ArrayList<Square> getSquares(){
         return squares;
     }
-
     // Other Methods ---------------------------------------------------------------------------------------------------
     public Square addSquare(String squareName, int row, int col, Color color) throws BoardException {
         Square newSquare = new Square(squareName, row, col, color , new Rectangle(90,90));
         squares.add(newSquare);
         return newSquare;
     }
-
+    public static void recordMoves(){
+        StringBuffer sb = new StringBuffer();
+        sb.append("Record moves goes here: Board - recordMoves()");
+        System.out.println(sb.toString());
+    }
     // toString --------------------------------------------------------------------------------------------------------
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -38,7 +41,6 @@ public class Board {
                             sb.append("| " + "  ");
                         else
                             sb.append("| ").append(s.getPiece().getPieceName()).append(" ");
-
                     }
                 }
             }

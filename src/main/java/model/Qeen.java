@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class Qeen extends Piece{
 
-
     public Qeen(String pieceName, int pieceValue, Square currentPositionSquare, ImageView imageView, Image image) throws BoardException {
         super(pieceName, pieceValue, currentPositionSquare, imageView, image);
     }
-
     public Qeen(String pieceName, int pieceValue, Square currentPositionSquare, String color) throws BoardException {
         super(pieceName, pieceValue,currentPositionSquare, color);
     }
@@ -29,7 +27,6 @@ public class Qeen extends Piece{
         possibleMoves.addAll(possibleSouthEast());
         return possibleMoves;
     }
-
     public ArrayList<Square> possibleNorth(){
         ArrayList<Square> norhtList = new ArrayList<>();
         outerloop:
@@ -51,7 +48,6 @@ public class Qeen extends Piece{
         }
         return norhtList;
     }
-
     public ArrayList<Square> possibleSouth(){
         ArrayList<Square> southList = new ArrayList<>();
         outerloop:
@@ -74,7 +70,6 @@ public class Qeen extends Piece{
 
         return southList;
     }
-
     public ArrayList<Square> possibleEast(){
         ArrayList<Square> eastList = new ArrayList<>();
         outerloop:
@@ -96,7 +91,6 @@ public class Qeen extends Piece{
         }
         return eastList;
     }
-
     public ArrayList<Square> possibleWest(){
         ArrayList<Square> westList = new ArrayList<>();
         outerloop:
@@ -118,7 +112,6 @@ public class Qeen extends Piece{
         }
         return westList;
     }
-
     public ArrayList<Square> possibleNorthWest(){
         ArrayList<Square> northWestList = new ArrayList<>();
         outerloop:
@@ -157,7 +150,6 @@ public class Qeen extends Piece{
         }
         return northEastList;
     }
-
     public ArrayList<Square> possibleSouthWest(){
         ArrayList<Square> southWestList = new ArrayList<>();
         outerloop:

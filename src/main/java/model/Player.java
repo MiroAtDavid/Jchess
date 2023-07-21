@@ -31,7 +31,6 @@ public class Player {
     public static ArrayList<Piece> getPieces() {
         return pieces;
     }
- 
 
     // Setter ----------------------------------------------------------------------------------------------------------
     public void setPieces(ArrayList<Piece> pieces) {
@@ -61,10 +60,7 @@ public class Player {
             throw new BoardException("Player - setColor(): String null");
     }
 
-
-    }
-
     // Other -----------------------------------------------------------------------------------------------------------
 
-
+}
 

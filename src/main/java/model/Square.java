@@ -48,7 +48,6 @@ public class Square {
         return this.occupied;
     }
 
-
     // Setter ----------------------------------------------------------------------------------------------------------
     public void setSquareName(String squareName) throws BoardException {
         if (squareName != null)
@@ -91,6 +90,7 @@ public class Square {
     public void removePiece(Piece piece) throws BoardException {
         if (getPiece() != null) {
             setPiece(null);
+            System.gc();
         } else {
             throw new BoardException("removePiece(): ");
         }

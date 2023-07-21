@@ -97,14 +97,14 @@ public class TestBoard {
 
 
         // Init Pieces White
-        Pawn pawnW8 = new Pawn("W", 1, Board.getSquares().get(48), "white");
-        Pawn pawnW7 = new Pawn("W", 1, Board.getSquares().get(49), "white");
-        Pawn pawnW6 = new Pawn("W", 1, Board.getSquares().get(50), "white");
-        Pawn pawnW5 = new Pawn("W", 1, Board.getSquares().get(51), "white");
-        Pawn pawnW4 = new Pawn("W", 1, Board.getSquares().get(52), "white");
-        Pawn pawnW3 = new Pawn("W", 1, Board.getSquares().get(53), "white");
-        Pawn pawnW2 = new Pawn("W", 1, Board.getSquares().get(54), "white");
-        Pawn pawnW1 = new Pawn("W", 1, Board.getSquares().get(55), "white");
+        Pawn pawnW8 = new Pawn("ʍ", 1, Board.getSquares().get(48), "white");
+        Pawn pawnW7 = new Pawn("ʍ", 1, Board.getSquares().get(49), "white");
+        Pawn pawnW6 = new Pawn("ʍ", 1, Board.getSquares().get(50), "white");
+        Pawn pawnW5 = new Pawn("ʍ", 1, Board.getSquares().get(51), "white");
+        Pawn pawnW4 = new Pawn("ʍ", 1, Board.getSquares().get(52), "white");
+        Pawn pawnW3 = new Pawn("ʍ", 1, Board.getSquares().get(53), "white");
+        Pawn pawnW2 = new Pawn("ʍ", 1, Board.getSquares().get(54), "white");
+        Pawn pawnW1 = new Pawn("ʍ", 1, Board.getSquares().get(55), "white");
         Rook rookw2 = new Rook("R", 4, Board.getSquares().get(56), "white");
         Knight knightw2 = new Knight("N", 3, Board.getSquares().get(57), "white");
         Bishop bishopw2 = new Bishop("B", 3, Board.getSquares().get(58), "white");
@@ -123,31 +123,31 @@ public class TestBoard {
         Bishop bishopB = new Bishop("B", 3, Board.getSquares().get(5), "black");
         Knight knightB = new Knight("N", 3, Board.getSquares().get(6), "black");
         Rook rookB = new Rook("R", 4, Board.getSquares().get(7), "black");
-        Pawn pawnB8 = new Pawn("P", 1, Board.getSquares().get(8), "black");
-        Pawn pawnB7 = new Pawn("P", 1, Board.getSquares().get(9), "black");
-        Pawn pawnB5 = new Pawn("P", 1, Board.getSquares().get(11), "black");
-        Pawn pawnB4 = new Pawn("P", 1, Board.getSquares().get(12), "black");
-        Pawn pawnB6 = new Pawn("P", 1, Board.getSquares().get(10), "black");
-        Pawn pawnB3 = new Pawn("P", 1, Board.getSquares().get(13), "black");
-        Pawn pawnB2 = new Pawn("P", 1, Board.getSquares().get(14), "black");
-        Pawn pawnB1 = new Pawn("P", 1, Board.getSquares().get(15), "black");
+        Pawn pawnB8 = new Pawn("w", 1, Board.getSquares().get(8), "black");
+        Pawn pawnB7 = new Pawn("w", 1, Board.getSquares().get(9), "black");
+        Pawn pawnB5 = new Pawn("w", 1, Board.getSquares().get(11), "black");
+        Pawn pawnB4 = new Pawn("w", 1, Board.getSquares().get(12), "black");
+        Pawn pawnB6 = new Pawn("w", 1, Board.getSquares().get(10), "black");
+        Pawn pawnB3 = new Pawn("w", 1, Board.getSquares().get(13), "black");
+        Pawn pawnB2 = new Pawn("w", 1, Board.getSquares().get(14), "black");
+        Pawn pawnB1 = new Pawn("w", 1, Board.getSquares().get(15), "black");
 
 
         // Init Players and add Pieces
         ArrayList<Piece> playerOnePieces = new ArrayList<>();
         ArrayList<Piece> playerTwoPieces = new ArrayList<>();
 
-        Player playerOne = new Player("PlayerOne", playerOnePieces,  "White");
-        Player playerTwo = new Player("PlayerTwo", playerTwoPieces,  "Black");
+        Player playerOne = new Player("PlayerOne", playerOnePieces, "White");
+        Player playerTwo = new Player("PlayerTwo", playerTwoPieces, "Black");
 
-        for (Square s : Board.getSquares()){
+        for (Square s : Board.getSquares()) {
             if (s.getPiece() != null) {
                 if (s.getPiece().getColor().equals("white"))
                     playerOnePieces.add(s.getPiece());
             }
         }
 
-        for (Square s : Board.getSquares()){
+        for (Square s : Board.getSquares()) {
             if (s.getPiece() != null) {
                 if (s.getPiece().getColor().equals("black"))
                     playerTwoPieces.add(s.getPiece());
@@ -156,19 +156,20 @@ public class TestBoard {
 
         // -------------------------------------------------------------------------------------------------------------
 
-        chessBoard.print();
-
+//        chessBoard.print();
+//
 //        System.out.println("\n" + pawnW5.move().getSquareName());
 //        System.out.println("\n" + pawnB4.move().getSquareName());
-//        System.out.println("\n" + pawnW4.move().getSquareName());
-//        System.out.println("\n" + knightB2.move().getSquareName());
-//        System.out.println("\n" + pawnW3.move().getSquareName());
-//        System.out.println("\n" + pawnB4.move().getSquareName());
 //        System.out.println("\n" + bishopw2.move().getSquareName());
+//        System.out.println("\n" + pawnB2.move().getSquareName());
+//        System.out.println("\n" + knightw2.move().getSquareName());
+//        System.out.println("\n" + pawnB1.move().getSquareName());
+//        chessBoard.print();
+//        System.out.println("\n" + kingw.move().getSquareName());
 //        chessBoard.print();
 
         int counter = 0;
-        while (counter < 20){
+        while (counter < 20) {
             Scanner sc = new Scanner(System.in);
 
             System.out.println("Your move from: ");
@@ -176,16 +177,54 @@ public class TestBoard {
 
             System.out.println("Your move to: ");
             String userPieceTargetSquare = sc.nextLine();
-
-            for (Square s : Board.getSquares()){
-                if (userPieceSquare.equals(s.getSquareName())){
-                    s.getPiece().userMove(userPieceTargetSquare);
+            for (Square square : Board.getSquares()) {
+                if (square.getPiece() != null) {
+                    if (square.getPiece().equals(kingw) || square.getPiece().equals(kingB)) {
+                        if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("g1") && !kingw.isActivated()) {
+                            kingw.castleWhiteKingSide();
+                        } else if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("c1") && !kingw.isActivated()) {
+                            kingw.castleWhiteQueenSide();
+                        } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("g8") && !kingB.isActivated()) {
+                            kingB.castleBlackKingSide();
+                        } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("c8") && !kingB.isActivated()) {
+                            kingB.castleBlackQueenSide();
+                        } else if (userPieceSquare.equals(square.getSquareName())) {
+                            if (square.getPiece().equals(kingw)){
+                                kingw.setActivated(true);
+                            } else if (square.getPiece().equals(kingB)){
+                                kingB.setActivated(true);
+                            } else if (square.getPiece().equals(rookw)) {
+                                rookw.setActivated(true);
+                            } else if (square.getPiece().equals(rookw2)) {
+                                rookw2.setActivated(true);
+                            } else if (square.getPiece().equals(rookB)) {
+                                rookB.setActivated(true);
+                            } else if (square.getPiece().equals(rookB2)) {
+                                rookB2.setActivated(true);
+                            }
+                            square.getPiece().userMove(userPieceTargetSquare);
+                        }
+                    } else if (userPieceSquare.equals(square.getSquareName())) {
+                        if (square.getPiece().equals(kingw)){
+                            kingw.setActivated(true);
+                        } else if (square.getPiece().equals(kingB)){
+                            kingB.setActivated(true);
+                        } else if (square.getPiece().equals(rookw)) {
+                            rookw.setActivated(true);
+                        } else if (square.getPiece().equals(rookw2)) {
+                            rookw2.setActivated(true);
+                        } else if (square.getPiece().equals(rookB)) {
+                            rookB.setActivated(true);
+                        } else if (square.getPiece().equals(rookB2)) {
+                            rookB2.setActivated(true);
+                        }
+                        square.getPiece().userMove(userPieceTargetSquare);
+                    }
                 }
             }
-
             chessBoard.print();
             counter++;
-        }
+
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Your move from: ");
 //        String userPieceSquare = sc.nextLine();
@@ -242,8 +281,10 @@ public class TestBoard {
 //        System.out.println();
 //        for (Piece p : playerOnePieces){
 //            System.out.print(p.getPieceName() + ", ");
-//        }
-        return chessBoard;
-    }
-}
+        }
 
+            return chessBoard;
+
+        }
+
+}

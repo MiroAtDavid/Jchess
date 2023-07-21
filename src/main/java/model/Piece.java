@@ -89,24 +89,27 @@ public abstract class Piece {
     }
 
     // Others ----------------------------------------------------------------------------------------------------------
-    public abstract  ArrayList<Square> possiblePos();
-
+    public abstract  ArrayList<Square> possiblePos() throws BoardException;
     public Square move() throws BoardException {
         getCurrentPositionSquare().setOccupied(false);
         Random random = new Random();
-        int randomWithinPossibleMove = 0;
+        int randomWithinPossibleMove;
         if (possiblePos().size() > 0)
             randomWithinPossibleMove = random.nextInt(0, possiblePos().size());
         else {
             System.out.println("No position possible for piece");
             return null;
         }
+
         Square newPositionSquare = possiblePos().get(randomWithinPossibleMove);
+
+
         if (newPositionSquare.isOccupied()){
             captureLogic(newPositionSquare);
         }
         newPositionSquare.setPiece(this);
-        this.setCurrentPositionSquare(newPositionSquare);
+
+        setCurrentPositionSquare(newPositionSquare);
         return newPositionSquare;
     }
     private void captureLogic(Square newPositionSquare) throws BoardException {
@@ -124,6 +127,7 @@ public abstract class Piece {
                     }
                     setCurrentPositionSquare(newPositionSquare);
                     newPositionSquare.setPiece(this);
+                    Board.recordMoves();
                     return newPositionSquare;
                 } else {
                     System.out.println("userMove(): TargetPossition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
@@ -134,5 +138,7 @@ public abstract class Piece {
         }
         return null;
     }
+
+
 
 }

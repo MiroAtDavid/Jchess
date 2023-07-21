@@ -26,7 +26,6 @@ public class Pawn extends Piece {
             possibleMoves.addAll(possibleSouth());
         return possibleMoves;
     }
-
     public ArrayList<Square> possibleNorth() {
         ArrayList<Square> northList = new ArrayList<>();
         for (Square square : Board.getSquares()) {
@@ -48,7 +47,6 @@ public class Pawn extends Piece {
         }
         return northList;
     }
-
     public ArrayList<Square> possibleSouth(){
         ArrayList<Square> southList = new ArrayList<>();
         for (Square square : Board.getSquares()){

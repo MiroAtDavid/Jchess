@@ -68,7 +68,6 @@ public class Bishop extends Piece {
         }
         return northEastList;
     }
-
     public ArrayList<Square> possibleSouthWest(){
         ArrayList<Square> southWestList = new ArrayList<>();
         outerloop:
