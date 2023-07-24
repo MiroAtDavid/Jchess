@@ -120,6 +120,7 @@ public abstract class Piece {
     public Square userMove(String userTargetPosition) throws BoardException {
         this.getCurrentPositionSquare().setOccupied(false);
         if (this.possiblePos().size() > 0) {
+            // possiblePos().removeIf(Square -> (!Square.getSquareName().equals(userTargetPosition))); // TODO check this
             for (Square newPositionSquare : possiblePos()) {
                 if (newPositionSquare.getSquareName().equals(userTargetPosition)) {
                     if (newPositionSquare.isOccupied()) {
@@ -130,7 +131,7 @@ public abstract class Piece {
                     Board.recordMoves();
                     return newPositionSquare;
                 } else {
-                    System.out.println("userMove(): TargetPossition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
+                    System.out.println("userMove(): TargetPosition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
                 }
             }
         } else {

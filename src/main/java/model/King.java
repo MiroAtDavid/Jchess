@@ -102,7 +102,7 @@ public class King extends Piece{
         return false;
     }
     private void userMoveCastleWhiteKingSide() throws BoardException {
-        this.getCurrentPositionSquare().setOccupied(false);
+        Board.getSquares().get(59).setOccupied(false);
         setCurrentPositionSquare(Board.getSquares().get(57));
         Board.getSquares().get(57).setPiece(this);
 
