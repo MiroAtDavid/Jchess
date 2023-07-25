@@ -4,7 +4,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public abstract class Piece {
     private String pieceName;
@@ -117,26 +119,35 @@ public abstract class Piece {
         newPositionSquare.removePiece(newPositionSquare.getPiece());
 
     }
-    public Square userMove(String userTargetPosition) throws BoardException {
-        this.getCurrentPositionSquare().setOccupied(false);
-        if (this.possiblePos().size() > 0) {
-            // possiblePos().removeIf(Square -> (!Square.getSquareName().equals(userTargetPosition))); // TODO check this
-            for (Square newPositionSquare : possiblePos()) {
-                if (newPositionSquare.getSquareName().equals(userTargetPosition)) {
-                    if (newPositionSquare.isOccupied()) {
-                        captureLogic(newPositionSquare);
+    public Square userMove(String userCurrentPosition, String userTargetPosition) throws BoardException {
+        for (Square s : Board.getSquares()){
+            if (s.getSquareName().equals(userCurrentPosition)){
+                Piece p = s.getPiece();
+                s.setOccupied(false);
+                s.removePiece(p);
+                if (p.possiblePos().size() > 0) {
+                    p.possiblePos().removeIf(sq -> !sq.getSquareName().equals(userTargetPosition));
+                    for (Square newPositionSquare : possiblePos()) {
+                        if (newPositionSquare.getSquareName().equals(userTargetPosition)) {
+                            if (newPositionSquare.isOccupied()) {
+                                captureLogic(newPositionSquare);
+                            }
+                            setCurrentPositionSquare(newPositionSquare);
+                            newPositionSquare.setPiece(p);
+                            //Board.recordMoves();
+                            return newPositionSquare;
+//                        } else {
+//                            System.out.println("userMove(): TargetPosition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
+                        }
                     }
-                    setCurrentPositionSquare(newPositionSquare);
-                    newPositionSquare.setPiece(this);
-                    Board.recordMoves();
-                    return newPositionSquare;
                 } else {
-                    System.out.println("userMove(): TargetPosition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
+                    System.out.println("No position possible for piece");
                 }
             }
-        } else {
-            System.out.println("No position possible for piece");
         }
+
+        // this.getCurrentPositionSquare().setOccupied(false);
+
         return null;
     }
 

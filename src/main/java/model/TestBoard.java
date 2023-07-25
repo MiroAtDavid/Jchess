@@ -169,7 +169,8 @@ public class TestBoard {
 //        chessBoard.print();
 
         int counter = 0;
-        while (counter < 20) {
+        while (counter < 40) {                        System.out.println(rookw.getCurrentPositionSquare().getSquareName() + " = rook current square");
+                        System.out.println(rookw2.getCurrentPositionSquare().getSquareName() + " = rook current square");
             Scanner sc = new Scanner(System.in);
 
             System.out.println("Your move from: ");
@@ -182,12 +183,16 @@ public class TestBoard {
                     if (square.getPiece().equals(kingw) || square.getPiece().equals(kingB)) {
                         if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("g1") && !kingw.isActivated()) {
                             kingw.castleWhiteKingSide();
+                            rookw.setCurrentPositionSquare(f1);
                         } else if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("c1") && !kingw.isActivated()) {
                             kingw.castleWhiteQueenSide();
+                            rookw2.setCurrentPositionSquare(d1);
                         } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("g8") && !kingB.isActivated()) {
                             kingB.castleBlackKingSide();
+                            rookB.setCurrentPositionSquare(f8);
                         } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("c8") && !kingB.isActivated()) {
                             kingB.castleBlackQueenSide();
+                            rookB2.setCurrentPositionSquare(d8);
                         } else if (userPieceSquare.equals(square.getSquareName())) {
                             if (square.getPiece().equals(kingw)){
                                 kingw.setActivated(true);
@@ -202,7 +207,7 @@ public class TestBoard {
                             } else if (square.getPiece().equals(rookB2)) {
                                 rookB2.setActivated(true);
                             }
-                            square.getPiece().userMove(userPieceTargetSquare);
+                            square.getPiece().userMove(userPieceSquare, userPieceTargetSquare);
                         }
                     } else if (userPieceSquare.equals(square.getSquareName())) {
                         if (square.getPiece().equals(kingw)){
@@ -218,69 +223,12 @@ public class TestBoard {
                         } else if (square.getPiece().equals(rookB2)) {
                             rookB2.setActivated(true);
                         }
-                        square.getPiece().userMove(userPieceTargetSquare);
+                        square.getPiece().userMove(userPieceSquare, userPieceTargetSquare);
                     }
                 }
             }
             chessBoard.print();
             counter++;
-
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Your move from: ");
-//        String userPieceSquare = sc.nextLine();
-//
-//        System.out.println("Your move to: ");
-//        String userPieceTargetSquare = sc.nextLine();
-//
-//        for (Square s : Board.getSquares()){
-//            if (userPieceSquare.equals(s.getSquareName())){
-//                s.getPiece().userMove(userPieceTargetSquare);
-//            }
-//        }
-//
-//        chessBoard.print();
-//
-//        System.out.println("\n" + pawnB5.move().getSquareName());
-//        chessBoard.print();
-//
-//        System.out.println("Your move from: ");
-//        String userPieceSquare2 = sc.nextLine();
-//
-//        System.out.println("Your move to: ");
-//        String userPieceTargetSquare2 = sc.nextLine();
-//
-//        for (Square s : Board.getSquares()){
-//            if (userPieceSquare2.equals(s.getSquareName())){
-//                s.getPiece().userMove(userPieceTargetSquare2);
-//            }
-//        }
-//        chessBoard.print();
-//
-//        System.out.println("\n" + pawnB4.move().getSquareName());
-//        chessBoard.print();
-//
-//        System.out.println("Your move from: ");
-//        String userPieceSquare3 = sc.nextLine();
-//
-//        System.out.println("Your move to: ");
-//        String userPieceTargetSquare3 = sc.nextLine();
-//
-//        for (Square s : Board.getSquares()){
-//            if (userPieceSquare3.equals(s.getSquareName())){
-//                s.getPiece().userMove(userPieceTargetSquare3);
-//            }
-//        }
-//        chessBoard.print();
-//        System.out.println(playerOne.getStrength());
-//        System.out.println(playerTwo.getStrength());
-
-//
-//        for (Piece p : playerTwoPieces){
-//            System.out.print(p.getPieceName() + ", ");
-//        }
-//        System.out.println();
-//        for (Piece p : playerOnePieces){
-//            System.out.print(p.getPieceName() + ", ");
         }
 
             return chessBoard;

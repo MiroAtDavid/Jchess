@@ -86,6 +86,8 @@ public class King extends Piece{
         if (!isActivated() && !checkProbeCastleWhiteKingSide() && !rook.isActivated() && !Board.getSquares().get(57).isOccupied()) {
             Rook.relocateRookCastleWhiteKingSide();
             userMoveCastleWhiteKingSide();
+
+
         }
     }
     private boolean checkProbeCastleWhiteKingSide() throws BoardException {
@@ -102,11 +104,15 @@ public class King extends Piece{
         return false;
     }
     private void userMoveCastleWhiteKingSide() throws BoardException {
+        Piece king = Board.getSquares().get(59).getPiece();
         Board.getSquares().get(59).setOccupied(false);
-        setCurrentPositionSquare(Board.getSquares().get(57));
-        Board.getSquares().get(57).setPiece(this);
+        Board.getSquares().get(59).removePiece(king);
+        king.setCurrentPositionSquare(Board.getSquares().get(57));
+        Board.getSquares().get(57).setPiece(king);
 
     }
+
+
     // Castle White Queen Side -----------------------------------------------------------------------------------------
     public void castleWhiteQueenSide() throws BoardException {
         Rook rook = (Rook) Board.getSquares().get(63).getPiece();

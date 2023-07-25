@@ -112,7 +112,7 @@ public class Rook extends Piece {
                         if (!square.isOccupied()){
                             westList.add(square);
                         } else if(square.isOccupied() && !square.getPiece().getColor().equals(this.getColor())){
-                                westList.add(square);
+                            westList.add(square);
                             break outerloop;
                         } else if (square.isOccupied() && square.getPiece().getColor().equals(this.getColor())){
                             break outerloop;
@@ -137,6 +137,8 @@ public class Rook extends Piece {
                     square.setOccupied(true);
                 }
             }
+        } else {
+            System.out.println("Rook is activated");
         }
     }
     static void relocateRookCastleWhiteQueenSide() throws BoardException {
