@@ -8,7 +8,10 @@ import java.util.Scanner;
 
 
 public class TestBoard {
-
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
     public static void main(String[] args) {
         try {
             initBoard();
@@ -97,40 +100,40 @@ public class TestBoard {
 
 
         // Init Pieces White
-        Pawn pawnW8 = new Pawn("ʍ", 1, Board.getSquares().get(48), "white");
-        Pawn pawnW7 = new Pawn("ʍ", 1, Board.getSquares().get(49), "white");
-        Pawn pawnW6 = new Pawn("ʍ", 1, Board.getSquares().get(50), "white");
-        Pawn pawnW5 = new Pawn("ʍ", 1, Board.getSquares().get(51), "white");
-        Pawn pawnW4 = new Pawn("ʍ", 1, Board.getSquares().get(52), "white");
-        Pawn pawnW3 = new Pawn("ʍ", 1, Board.getSquares().get(53), "white");
-        Pawn pawnW2 = new Pawn("ʍ", 1, Board.getSquares().get(54), "white");
-        Pawn pawnW1 = new Pawn("ʍ", 1, Board.getSquares().get(55), "white");
-        Rook rookw2 = new Rook("R", 4, Board.getSquares().get(56), "white");
-        Knight knightw2 = new Knight("N", 3, Board.getSquares().get(57), "white");
-        Bishop bishopw2 = new Bishop("B", 3, Board.getSquares().get(58), "white");
-        King kingw = new King("K", 100, Board.getSquares().get(59), "white");
-        Qeen queenw = new Qeen("Q", 8, Board.getSquares().get(60), "white");
-        Bishop bishopw = new Bishop("B", 3, Board.getSquares().get(61), "white");
-        Knight knightw = new Knight("N", 3, Board.getSquares().get(62), "white");
-        Rook rookw = new Rook("R", 4, Board.getSquares().get(63), "white");
+        Pawn pawnW8 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(48), "white");
+        Pawn pawnW7 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(49), "white");
+        Pawn pawnW6 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(50), "white");
+        Pawn pawnW5 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(51), "white");
+        Pawn pawnW4 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(52), "white");
+        Pawn pawnW3 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(53), "white");
+        Pawn pawnW2 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(54), "white");
+        Pawn pawnW1 = new Pawn(ANSI_RED + "ʍ" + ANSI_RESET, 1, Board.getSquares().get(55), "white");
+        Rook rookw2 = new Rook(ANSI_RED + "R" + ANSI_RESET, 4, Board.getSquares().get(56), "white");
+        Knight knightw2 = new Knight(ANSI_RED + "N" + ANSI_RESET, 3, Board.getSquares().get(57), "white");
+        Bishop bishopw2 = new Bishop(ANSI_RED + "B" + ANSI_RESET, 3, Board.getSquares().get(58), "white");
+        King kingw = new King(ANSI_RED + "K" + ANSI_RESET, 100, Board.getSquares().get(59), "white");
+        Qeen queenw = new Qeen(ANSI_RED + "Q" + ANSI_RESET, 8, Board.getSquares().get(60), "white");
+        Bishop bishopw = new Bishop(ANSI_RED + "B" + ANSI_RESET, 3, Board.getSquares().get(61), "white");
+        Knight knightw = new Knight(ANSI_RED + "N" + ANSI_RESET, 3, Board.getSquares().get(62), "white");
+        Rook rookw = new Rook(ANSI_RED + "R" + ANSI_RESET, 4, Board.getSquares().get(63), "white");
 
         // Init Pieces Black
-        Rook rookB2 = new Rook("R", 4, Board.getSquares().get(0), "black");
-        Knight knightB2 = new Knight("N", 3, Board.getSquares().get(1), "black");
-        Bishop bishopB2 = new Bishop("B", 3, Board.getSquares().get(2), "black");
-        King kingB = new King("K", 100, Board.getSquares().get(3), "black");
-        Qeen queenB = new Qeen("Q", 8, Board.getSquares().get(4), "black");
-        Bishop bishopB = new Bishop("B", 3, Board.getSquares().get(5), "black");
-        Knight knightB = new Knight("N", 3, Board.getSquares().get(6), "black");
-        Rook rookB = new Rook("R", 4, Board.getSquares().get(7), "black");
-        Pawn pawnB8 = new Pawn("w", 1, Board.getSquares().get(8), "black");
-        Pawn pawnB7 = new Pawn("w", 1, Board.getSquares().get(9), "black");
-        Pawn pawnB5 = new Pawn("w", 1, Board.getSquares().get(11), "black");
-        Pawn pawnB4 = new Pawn("w", 1, Board.getSquares().get(12), "black");
-        Pawn pawnB6 = new Pawn("w", 1, Board.getSquares().get(10), "black");
-        Pawn pawnB3 = new Pawn("w", 1, Board.getSquares().get(13), "black");
-        Pawn pawnB2 = new Pawn("w", 1, Board.getSquares().get(14), "black");
-        Pawn pawnB1 = new Pawn("w", 1, Board.getSquares().get(15), "black");
+        Rook rookB2 = new Rook(ANSI_BLUE + "R" + ANSI_RESET, 4, Board.getSquares().get(0), "black");
+        Knight knightB2 = new Knight(ANSI_BLUE + "N" + ANSI_RESET, 3, Board.getSquares().get(1), "black");
+        Bishop bishopB2 = new Bishop(ANSI_BLUE + "B" + ANSI_RESET, 3, Board.getSquares().get(2), "black");
+        King kingB = new King(ANSI_BLUE + "K" + ANSI_RESET, 100, Board.getSquares().get(3), "black");
+        Qeen queenB = new Qeen(ANSI_BLUE + "Q" + ANSI_RESET, 8, Board.getSquares().get(4), "black");
+        Bishop bishopB = new Bishop(ANSI_BLUE + "B" + ANSI_RESET, 3, Board.getSquares().get(5), "black");
+        Knight knightB = new Knight(ANSI_BLUE + "N" + ANSI_RESET, 3, Board.getSquares().get(6), "black");
+        Rook rookB = new Rook(ANSI_BLUE + "R" + ANSI_RESET, 4, Board.getSquares().get(7), "black");
+        Pawn pawnB8 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(8), "black");
+        Pawn pawnB7 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(9), "black");
+        Pawn pawnB5 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(11), "black");
+        Pawn pawnB4 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(12), "black");
+        Pawn pawnB6 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(10), "black");
+        Pawn pawnB3 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(13), "black");
+        Pawn pawnB2 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(14), "black");
+        Pawn pawnB1 = new Pawn(ANSI_BLUE + "w" + ANSI_RESET, 1, Board.getSquares().get(15), "black");
 
 
         // Init Players and add Pieces

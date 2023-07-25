@@ -39,7 +39,9 @@ public class Board {
                     if (s.getRow() == row && s.getCol() == col) {
                         if (!s.isOccupied())
                             sb.append("| " + "  ");
-                        else
+                        else if (s.getPiece().getColor().equals("white"))
+                            sb.append("| ").append(s.getPiece().getPieceName()).append(" ");
+                        else if (s.getPiece().getColor().equals("black"))
                             sb.append("| ").append(s.getPiece().getPieceName()).append(" ");
                     }
                 }
