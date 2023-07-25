@@ -171,16 +171,12 @@ public class TestBoard {
                     if (square.getPiece().equals(kingw) || square.getPiece().equals(kingB)) {
                         if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("g1") && !kingw.isActivated()) {
                             kingw.castleWhiteKingSide();
-                            rookw.setCurrentPositionSquare(f1);
                         } else if (userPieceSquare.equals("e1") && userPieceTargetSquare.equals("c1") && !kingw.isActivated()) {
                             kingw.castleWhiteQueenSide();
-                            rookw2.setCurrentPositionSquare(d1);
                         } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("g8") && !kingB.isActivated()) {
                             kingB.castleBlackKingSide();
-                            rookB.setCurrentPositionSquare(f8);
                         } else if (userPieceSquare.equals("e8") && userPieceTargetSquare.equals("c8") && !kingB.isActivated()) {
                             kingB.castleBlackQueenSide();
-                            rookB2.setCurrentPositionSquare(d8);
                         } else if (userPieceSquare.equals(square.getSquareName())) {
                             if (square.getPiece().equals(kingw)){
                                 kingw.setActivated(true);

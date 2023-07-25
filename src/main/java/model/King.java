@@ -88,6 +88,7 @@ public class King extends Piece{
             userMoveCastleWhiteKingSide();
 
 
+
         }
     }
     private boolean checkProbeCastleWhiteKingSide() throws BoardException {

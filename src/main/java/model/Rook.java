@@ -135,6 +135,7 @@ public class Rook extends Piece {
                 if (square.getSquareName().equals("f1")) {
                     square.setPiece(rook);
                     square.setOccupied(true);
+                    rook.setCurrentPositionSquare(square);
                 }
             }
         } else {
@@ -151,6 +152,7 @@ public class Rook extends Piece {
                 if (Board.getSquares().get(60).equals(square)) {
                     square.setPiece(rook);
                     square.setOccupied(true);
+                    rook.setCurrentPositionSquare(square);
                 }
             }
         }
@@ -165,6 +167,7 @@ public class Rook extends Piece {
                 if (square.getSquareName().equals("f8")) {
                     square.setPiece(rook);
                     square.setOccupied(true);
+                    rook.setCurrentPositionSquare(square);
                 }
             }
         }
@@ -179,6 +182,7 @@ public class Rook extends Piece {
                 if (Board.getSquares().get(4).equals(square)) {
                     square.setPiece(rook);
                     square.setOccupied(true);
+                    rook.setCurrentPositionSquare(square);
                 }
             }
         }
