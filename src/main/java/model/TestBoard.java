@@ -156,21 +156,9 @@ public class TestBoard {
 
         // -------------------------------------------------------------------------------------------------------------
 
-//        chessBoard.print();
-//
-//        System.out.println("\n" + pawnW5.move().getSquareName());
-//        System.out.println("\n" + pawnB4.move().getSquareName());
-//        System.out.println("\n" + bishopw2.move().getSquareName());
-//        System.out.println("\n" + pawnB2.move().getSquareName());
-//        System.out.println("\n" + knightw2.move().getSquareName());
-//        System.out.println("\n" + pawnB1.move().getSquareName());
-//        chessBoard.print();
-//        System.out.println("\n" + kingw.move().getSquareName());
-//        chessBoard.print();
 
         int counter = 0;
-        while (counter < 40) {                        System.out.println(rookw.getCurrentPositionSquare().getSquareName() + " = rook current square");
-                        System.out.println(rookw2.getCurrentPositionSquare().getSquareName() + " = rook current square");
+        while (counter < 40) {
             Scanner sc = new Scanner(System.in);
 
             System.out.println("Your move from: ");
