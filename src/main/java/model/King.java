@@ -86,9 +86,6 @@ public class King extends Piece{
         if (!isActivated() && !checkProbeCastleWhiteKingSide() && !rook.isActivated() && !Board.getSquares().get(57).isOccupied()) {
             Rook.relocateRookCastleWhiteKingSide();
             userMoveCastleWhiteKingSide();
-
-
-
         }
     }
     private boolean checkProbeCastleWhiteKingSide() throws BoardException {
@@ -110,7 +107,7 @@ public class King extends Piece{
         Board.getSquares().get(59).removePiece(king);
         king.setCurrentPositionSquare(Board.getSquares().get(57));
         Board.getSquares().get(57).setPiece(king);
-
+        Board.recordMoves(king, Board.getSquares().get(59), Board.getSquares().get(57));
     }
 
 
@@ -136,9 +133,12 @@ public class King extends Piece{
         return false;
     }
     private void userMoveCastleQueenSide() throws BoardException {
+        Piece king = Board.getSquares().get(59).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
         setCurrentPositionSquare(Board.getSquares().get(61));
         Board.getSquares().get(61).setPiece(this);
+        Board.recordMoves(king, Board.getSquares().get(59), Board.getSquares().get(61));
+
 
     }
 
@@ -164,9 +164,13 @@ public class King extends Piece{
         return false;
     }
     private void userMoveCastleBlackKingSide() throws BoardException {
+        Piece king = Board.getSquares().get(3).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
         setCurrentPositionSquare(Board.getSquares().get(1));
         Board.getSquares().get(1).setPiece(this);
+        Board.recordMoves(king, Board.getSquares().get(3), Board.getSquares().get(1));
+
+
 
     }
 
@@ -192,9 +196,12 @@ public class King extends Piece{
         return false;
     }
     private void userMoveCastleBlackQueenSide() throws BoardException {
+        Piece king = Board.getSquares().get(3).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
         setCurrentPositionSquare(Board.getSquares().get(5));
         Board.getSquares().get(5).setPiece(this);
+        Board.recordMoves(king, Board.getSquares().get(3), Board.getSquares().get(5));
+
 
     }
 
