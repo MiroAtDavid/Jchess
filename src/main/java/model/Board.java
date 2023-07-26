@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
-// TODO check, checkmate, three moves repeat rule, 50 moves rule, pawn transformation
+// TODO check, checkmate, three moves repeat rule, 50 moves rule
 // TODO check is already featured (in castling) but not named as such eg. separate method
 // TODO .....
 
