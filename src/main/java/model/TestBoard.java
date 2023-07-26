@@ -168,7 +168,7 @@ public class TestBoard {
 
         // -------------------------------------------------------------------------------------------------------------
 
-
+        chessBoard.print();
         int counter = 0;
         while (counter < 40) {
             Scanner sc = new Scanner(System.in);
@@ -224,9 +224,6 @@ public class TestBoard {
             chessBoard.print();
             counter++;
         }
-
             return chessBoard;
-
         }
-
 }

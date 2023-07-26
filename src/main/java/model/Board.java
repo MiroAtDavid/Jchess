@@ -5,29 +5,41 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
-public class Board {
+// TODO check, checkmate, thrree moves repeat rule, 50 moves rule, pawn transformation
 
+public class Board {
     private static ArrayList<Square> squares;
+    static HashMap<Piece, ArrayList<Square>> recordMove = new HashMap<>();
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
     public Board(){
         squares = new ArrayList<>();
     }
+
     // Getter ---- -----------------------------------------------------------------------------------------------------
     public static ArrayList<Square> getSquares(){
         return squares;
     }
+
     // Other Methods ---------------------------------------------------------------------------------------------------
     public Square addSquare(String squareName, int row, int col, Color color) throws BoardException {
         Square newSquare = new Square(squareName, row, col, color , new Rectangle(90,90));
         squares.add(newSquare);
         return newSquare;
     }
-    public static void recordMoves(){
+    public static HashMap<Piece, ArrayList<Square>> recordMoves(Piece piece, Square sourcePosition, Square targetPosition){
+        recordMove.clear();
+        ArrayList<Square> sqrs = new ArrayList<>();
+        sqrs.add(sourcePosition);
+        sqrs.add(targetPosition);
+        recordMove.put(piece, sqrs);
         StringBuffer sb = new StringBuffer();
-        sb.append("Record moves goes here: Board - recordMoves()");
+        sb.append("Recorded Move: ");
+        sb.append(piece.getPieceName()).append(" ").append(sourcePosition.getSquareName()).append(" ").append(targetPosition.getSquareName());
         System.out.println(sb.toString());
+        return recordMove;
     }
+
     // toString --------------------------------------------------------------------------------------------------------
     public String toString() {
         StringBuffer sb = new StringBuffer();

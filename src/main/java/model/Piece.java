@@ -2,11 +2,10 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
+
 
 public abstract class Piece {
     private String pieceName;
@@ -52,6 +51,7 @@ public abstract class Piece {
     public ImageView getImageView(){
         return imageView;
     }
+
     // Setter ----------------------------------------------------------------------------------------------------------
 
     public void setColor(String color) {
@@ -89,6 +89,7 @@ public abstract class Piece {
         else
             throw new BoardException("Piece - setImageView(): imageView null");
     }
+
 
     // Others ----------------------------------------------------------------------------------------------------------
     public abstract  ArrayList<Square> possiblePos() throws BoardException;
@@ -132,12 +133,17 @@ public abstract class Piece {
                             if (newPositionSquare.isOccupied()) {
                                 captureLogic(newPositionSquare);
                             }
+                            if (p instanceof Pawn pawn) {
+                                if (pawn.isEnPassant()){
+                                    if (pawn.getEnPassantSquare().equals(newPositionSquare)){
+                                        pawn.checkEnPassant(newPositionSquare);
+                                    }
+                                }
+                            }
                             setCurrentPositionSquare(newPositionSquare);
                             newPositionSquare.setPiece(p);
-                            //Board.recordMoves();
+                            Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
                             return newPositionSquare;
-//                        } else {
-//                            System.out.println("userMove(): TargetPosition not legal!"); // TODO , not quite clear how to deal with illegal moves, black throws illegal move
                         }
                     }
                 } else {
@@ -145,9 +151,6 @@ public abstract class Piece {
                 }
             }
         }
-
-        // this.getCurrentPositionSquare().setOccupied(false);
-
         return null;
     }
 
