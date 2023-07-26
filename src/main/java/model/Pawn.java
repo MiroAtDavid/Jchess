@@ -5,6 +5,9 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
+
+import static model.TestBoard.*;
 
 public class Pawn extends Piece {
     private boolean enPassant;
@@ -152,7 +155,7 @@ public class Pawn extends Piece {
         }
         return southList;
     }
-     public void checkEnPassant(Square sq) throws BoardException {
+    public void checkEnPassant(Square sq) throws BoardException {
         sq.setOccupied(true);
         Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
         ArrayList<Square> first = squaresArray.iterator().next();
@@ -172,6 +175,30 @@ public class Pawn extends Piece {
         Player.getPieces().remove(piece);
         newPositionSquare.removePiece(piece);
         newPositionSquare.setOccupied(false);
+    }
+    public void pawnTransformationWhite(Square transformationSquare) throws BoardException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Q for ♛ - R for ♜ - B for ♝ - K for ♞: ");
+        String transformationPiece = sc.nextLine();
+        switch (transformationPiece) {
+            case "Q" -> transformationSquare.setPiece(new Qeen(ANSI_WHITE_QUEEN, 8, transformationSquare, "white"));
+            case "R" -> transformationSquare.setPiece(new Qeen(ANSI_WHITE_ROOK, 4, transformationSquare, "white"));
+            case "B" -> transformationSquare.setPiece(new Qeen(ANSI_WHITE_BISHOP, 3, transformationSquare, "white"));
+            case "K" -> transformationSquare.setPiece(new Qeen(ANSI_WHITE_KNIGHT, 3, transformationSquare, "white"));
+        }
+        transformationSquare.setOccupied(true);
+    }
+    public void pawnTransformationBlack(Square transformationSquare) throws BoardException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Q for ♕ - R for ♖ - B for ♗ - K for ♘: ");
+        String transformationPiece = sc.nextLine();
+        switch (transformationPiece) {
+            case "Q" -> transformationSquare.setPiece(new Qeen(ANSI_BLACK_QUEEN, 8, transformationSquare, "black"));
+            case "R" -> transformationSquare.setPiece(new Qeen(ANSI_BLACK_ROOK, 4, transformationSquare, "black"));
+            case "B" -> transformationSquare.setPiece(new Qeen(ANSI_BLACK_BISHOP, 3, transformationSquare, "black"));
+            case "K" -> transformationSquare.setPiece(new Qeen(ANSI_BLACK_KNIGHT, 3, transformationSquare, "black"));
+        }
+        transformationSquare.setOccupied(true);
     }
 
 }

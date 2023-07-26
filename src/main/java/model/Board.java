@@ -5,7 +5,9 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
-// TODO check, checkmate, thrree moves repeat rule, 50 moves rule, pawn transformation
+// TODO check, checkmate, three moves repeat rule, 50 moves rule, pawn transformation
+// TODO check is already featured (in castling) but not named as such eg. separate method
+// TODO .....
 
 public class Board {
     private static ArrayList<Square> squares;
@@ -36,7 +38,7 @@ public class Board {
         StringBuffer sb = new StringBuffer();
         sb.append("Recorded Move: ");
         sb.append(piece.getPieceName()).append(" ").append(sourcePosition.getSquareName()).append(" ").append(targetPosition.getSquareName());
-        System.out.println(sb.toString());
+        System.out.println(sb);
         return recordMove;
     }
 

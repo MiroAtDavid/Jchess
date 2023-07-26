@@ -139,6 +139,16 @@ public abstract class Piece {
                                         pawn.checkEnPassant(newPositionSquare);
                                     }
                                 }
+                                if (newPositionSquare.getRow() == 8) {
+                                    pawn.pawnTransformationWhite(newPositionSquare);
+                                    Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
+                                    return newPositionSquare;
+                                }
+                                if (newPositionSquare.getRow() == 1) {
+                                    pawn.pawnTransformationBlack(newPositionSquare);
+                                    Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
+                                    return newPositionSquare;
+                                }
                             }
                             setCurrentPositionSquare(newPositionSquare);
                             newPositionSquare.setPiece(p);
