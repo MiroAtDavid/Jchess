@@ -5,22 +5,45 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
-// TODO check, checkmate, three moves repeat rule, 50 moves rule
-// TODO check is already featured (in castling) but not named as such eg. separate method
+// TODO check (as method implemented, however 100% complete therefore game logic doesn't apply, checkmate, three moves repeat rule, 50 moves rule
 // TODO .....
 
 public class Board {
+
+    private Player playerOne;
+    private Player playertwo;
     private static ArrayList<Square> squares;
     static HashMap<Piece, ArrayList<Square>> recordMove = new HashMap<>();
-
     // Konstruktor -----------------------------------------------------------------------------------------------------
-    public Board(){
+
+    public Board(Player playerOne, Player playertwo){
+        setPlayertwo(playertwo);
+        setPlayerOne(playerOne);
         squares = new ArrayList<>();
+
+    }
+    // Getter ---- -----------------------------------------------------------------------------------------------------
+
+    public Player getPlayerOne() {
+        return playerOne;
     }
 
-    // Getter ---- -----------------------------------------------------------------------------------------------------
+    public Player getPlayertwo() {
+        return playertwo;
+    }
+
     public static ArrayList<Square> getSquares(){
         return squares;
+    }
+
+    // Setter ----------------------------------------------------------------------------------------------------------
+
+    public void setPlayerOne(Player playerOne) {
+        this.playerOne = playerOne;
+    }
+
+    public void setPlayertwo(Player playertwo) {
+        this.playertwo = playertwo;
     }
 
     // Other Methods ---------------------------------------------------------------------------------------------------
@@ -44,7 +67,7 @@ public class Board {
 
     // toString --------------------------------------------------------------------------------------------------------
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("\n");
         sb.append("---------------------------------\n");
         for (int row = 8; row > 0; row --){

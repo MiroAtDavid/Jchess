@@ -245,7 +245,7 @@ public class RootBorderPane extends BorderPane {
 
 
 
-		Board board = new Board();
+		//Board board = new Board();
 		flowPanetop = new FlowPane();
 			flowPanetop.setMinHeight(100);
 		vBoxLeft = new VBox();

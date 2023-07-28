@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
+
 public class King extends Piece{
 
     private boolean activated;
@@ -110,7 +112,6 @@ public class King extends Piece{
         Board.recordMoves(king, Board.getSquares().get(59), Board.getSquares().get(57));
     }
 
-
     // Castle White Queen Side -----------------------------------------------------------------------------------------
     public void castleWhiteQueenSide() throws BoardException {
         Rook rook = (Rook) Board.getSquares().get(63).getPiece();
@@ -203,6 +204,30 @@ public class King extends Piece{
         Board.recordMoves(king, Board.getSquares().get(3), Board.getSquares().get(5));
 
 
+    }
+
+    // Check Probe -----------------------------------------------------------------------------------------------------
+    public boolean checkProbeWhite(Piece king) throws BoardException {
+        for (Square s : Board.getSquares()){
+            if (s.getPiece() != null && s.getPiece().getColor().equals("black")) {
+                for (Square square : s.getPiece().possiblePos()) {
+                    if (square.getSquareName().equals(king.getCurrentPositionSquare().getSquareName()))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean checkProbeBlack(Piece king) throws BoardException {
+        for (Square s :Board.getSquares()){
+            if (s.getPiece() != null && s.getPiece().getColor().equals("white")) {
+                for (Square square : s.getPiece().possiblePos()) {
+                    if (square.getSquareName().equals(king.getCurrentPositionSquare().getSquareName()))
+                        return true;
+               }
+            }
+        }
+        return false;
     }
 
 }
