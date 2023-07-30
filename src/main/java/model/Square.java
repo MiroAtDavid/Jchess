@@ -74,26 +74,21 @@ public class Square {
             throw new BoardException("Piece - setColor(): null");
     }
     public void setRectangle(Rectangle rectangle) {
-            this.rectangle = rectangle;
+        this.rectangle = rectangle;
     }
     public void setPiece(Piece piece) throws BoardException {
-           // if (piece != null)
-                this.piece = piece;
-//            else
-//                throw new BoardException("Square - setPiece(): null");
+        this.piece = piece;
+
     }
     public void setOccupied(boolean occupied) {
-            this.occupied = occupied;
+        this.occupied = occupied;
     }
 
     // Other -----------------------------------------------------------------------------------------------------------
     public void removePiece(Piece piece) throws BoardException {
-        if (getPiece() != null) {
             setPiece(null);
             System.gc();
-        } else {
-            throw new BoardException("removePiece(): ");
-        }
+
     }
     // toString---------------------------------------------------------------------------------------------------------
     public String toString(boolean showWeight) {

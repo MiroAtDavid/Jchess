@@ -18,9 +18,9 @@ public class Knight extends Piece{
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos(){
+    public ArrayList<Square> possiblePos(Board board){
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        for (Square square : Board.getSquares()) {
+        for (Square square : board.getSquares()) {
             if (!square.isOccupied()) {
                 if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
                     possibleMoves.add(square);

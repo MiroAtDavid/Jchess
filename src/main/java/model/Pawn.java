@@ -45,17 +45,17 @@ public class Pawn extends Piece {
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos() {
+    public ArrayList<Square> possiblePos(Board board) {
         ArrayList<Square> possibleMoves = new ArrayList<>();
         if (!this.getColor().equals("black"))
-            possibleMoves.addAll(possibleNorth());
+            possibleMoves.addAll(possibleNorth(board));
         if (this.getColor().equals("black"))
-            possibleMoves.addAll(possibleSouth());
+            possibleMoves.addAll(possibleSouth(board));
         return possibleMoves;
     }
-    public ArrayList<Square> possibleNorth() {
+    public ArrayList<Square> possibleNorth(Board board) {
         ArrayList<Square> northList = new ArrayList<>();
-        for (Square square : Board.getSquares()) {
+        for (Square square : board.getSquares()) {
             if (!square.isOccupied()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() == getCurrentPositionSquare().getRow() + 1) {
@@ -72,11 +72,11 @@ public class Pawn extends Piece {
                     if (square.getRow() == getCurrentPositionSquare().getRow() + 1 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
                         northList.add(square);
                     if (square.getRow() == getCurrentPositionSquare().getRow() && getCurrentPositionSquare().getRow() == 5 && square.getCol() == getCurrentPositionSquare().getCol() - 1) {
-                        Piece p = (Piece) Board.recordMove.keySet().toArray()[0];
-                        Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
+                        Piece p = (Piece) board.recordMove.keySet().toArray()[0];
+                        Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
                         ArrayList<Square> first = squaresArray.iterator().next();
                         if (p.equals(square.getPiece()) && square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() + 2) {
-                            for (Square s : Board.getSquares()) {
+                            for (Square s : board.getSquares()) {
                                 if (first.get(1).getRow() + 1 == s.getRow() && first.get(1).getCol() == s.getCol()) {
                                     setEnPassant(true);
                                     northList.add(s);
@@ -86,11 +86,11 @@ public class Pawn extends Piece {
                         }
                     }
                     if (square.getRow() == getCurrentPositionSquare().getRow() && getCurrentPositionSquare().getRow() == 5 && square.getCol() == getCurrentPositionSquare().getCol() + 1) {
-                        Piece p = (Piece) Board.recordMove.keySet().toArray()[0];
-                        Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
+                        Piece p = (Piece) board.recordMove.keySet().toArray()[0];
+                        Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
                         ArrayList<Square> first = squaresArray.iterator().next();
                         if (p.equals(square.getPiece()) && square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() + 2) {
-                            for (Square s : Board.getSquares()) {
+                            for (Square s : board.getSquares()) {
                                 if (first.get(1).getRow() + 1 == s.getRow() && first.get(1).getCol() == s.getCol()) {
                                     setEnPassant(true);
                                     northList.add(s);
@@ -104,9 +104,9 @@ public class Pawn extends Piece {
         }
         return northList;
     }
-    public ArrayList<Square> possibleSouth(){
+    public ArrayList<Square> possibleSouth(Board board){
         ArrayList<Square> southList = new ArrayList<>();
-        for (Square square : Board.getSquares()){
+        for (Square square : board.getSquares()){
             if (!square.isOccupied()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() == getCurrentPositionSquare().getRow() - 1) {
@@ -123,11 +123,11 @@ public class Pawn extends Piece {
                     if (square.getRow() == getCurrentPositionSquare().getRow() - 1 && square.getCol() == getCurrentPositionSquare().getCol() - 1)
                         southList.add(square);
                     if (square.getRow() == getCurrentPositionSquare().getRow() && getCurrentPositionSquare().getRow() == 4 && square.getCol() == getCurrentPositionSquare().getCol() + 1) {
-                        Piece p = (Piece) Board.recordMove.keySet().toArray()[0];
-                        Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
+                        Piece p = (Piece) board.recordMove.keySet().toArray()[0];
+                        Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
                         ArrayList<Square> first = squaresArray.iterator().next();
                         if (p.equals(square.getPiece()) && square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() - 2) {
-                            for (Square s : Board.getSquares()) {
+                            for (Square s : board.getSquares()) {
                                 if (first.get(1).getRow() - 1 == s.getRow() && first.get(1).getCol() == s.getCol()) {
                                     setEnPassant(true);
                                     southList.add(s);
@@ -137,11 +137,11 @@ public class Pawn extends Piece {
                         }
                     }
                     if (square.getRow() == getCurrentPositionSquare().getRow() && getCurrentPositionSquare().getRow() == 4 && square.getCol() == getCurrentPositionSquare().getCol() - 1) {
-                        Piece p = (Piece) Board.recordMove.keySet().toArray()[0];
-                        Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
+                        Piece p = (Piece) board.recordMove.keySet().toArray()[0];
+                        Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
                         ArrayList<Square> first = squaresArray.iterator().next();
                         if (p.equals(square.getPiece()) && square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() - 2) {
-                            for (Square s : Board.getSquares()) {
+                            for (Square s : board.getSquares()) {
                                 if (first.get(1).getRow() - 1 == s.getRow() && first.get(1).getCol() == s.getCol()) {
                                     setEnPassant(true);
                                     southList.add(s);
@@ -155,26 +155,29 @@ public class Pawn extends Piece {
         }
         return southList;
     }
-    public void checkEnPassant(Square sq) throws BoardException {
+    public void checkEnPassant(Board board, Square sq) throws BoardException {
         sq.setOccupied(true);
-        Collection<ArrayList<Square>> squaresArray = Board.recordMove.values();
+        Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
         ArrayList<Square> first = squaresArray.iterator().next();
-            for (Square square : Board.getSquares()){
-                if (square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() + 2) {
-                    setEnPassant(false);
-                    captureLogic(square, square.getPiece());
-                    setEnPassantSquare(null);
-                } else if (square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() - 2) {
-                    setEnPassant(false);
-                    captureLogic(square, square.getPiece());
-                    setEnPassantSquare(null);
-                }
+        for (Square square : board.getSquares()){
+            if (square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() + 2) {
+                setEnPassant(false);
+                captureLogic(board, square, square.getPiece());
+                setEnPassantSquare(null);
+            } else if (square.equals(first.get(1)) && first.get(0).getRow() == square.getRow() - 2) {
+                setEnPassant(false);
+                captureLogic(board, square, square.getPiece());
+                setEnPassantSquare(null);
             }
+        }
     }
-    private static void captureLogic(Square newPositionSquare, Piece piece) throws BoardException {
-        Player.getPieces().remove(piece);
-        newPositionSquare.removePiece(piece);
-        newPositionSquare.setOccupied(false);
+
+    private static void captureLogic(Board board, Square newPositionSquare, Piece piece) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            player.getPieces().remove(piece);
+            newPositionSquare.removePiece(piece);
+            newPositionSquare.setOccupied(false);
+        }
     }
     public void pawnTransformationWhite(Square transformationSquare) throws BoardException {
         Scanner sc = new Scanner(System.in);

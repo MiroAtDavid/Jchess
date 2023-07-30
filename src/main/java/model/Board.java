@@ -10,49 +10,41 @@ import java.util.*;
 
 public class Board {
 
-    private Player playerOne;
-    private Player playertwo;
-    private static ArrayList<Square> squares;
-    static HashMap<Piece, ArrayList<Square>> recordMove = new HashMap<>();
+    private ArrayList<Player> players;
+    private ArrayList<Square> squares;
+    HashMap<Piece, ArrayList<Square>> recordMove = new HashMap<>();
     // Konstruktor -----------------------------------------------------------------------------------------------------
 
-    public Board(Player playerOne, Player playertwo){
-        setPlayertwo(playertwo);
-        setPlayerOne(playerOne);
+    public Board(){
+        players = new ArrayList<>();
         squares = new ArrayList<>();
 
     }
     // Getter ---- -----------------------------------------------------------------------------------------------------
 
-    public Player getPlayerOne() {
-        return playerOne;
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
-    public Player getPlayertwo() {
-        return playertwo;
-    }
-
-    public static ArrayList<Square> getSquares(){
+    public ArrayList<Square> getSquares(){
         return squares;
     }
 
-    // Setter ----------------------------------------------------------------------------------------------------------
-
-    public void setPlayerOne(Player playerOne) {
-        this.playerOne = playerOne;
-    }
-
-    public void setPlayertwo(Player playertwo) {
-        this.playertwo = playertwo;
-    }
-
     // Other Methods ---------------------------------------------------------------------------------------------------
+
+    public void addPlayer( Player player) throws BoardException {
+        if (player == null)
+            throw new BoardException("addPlayer(): Player null");
+        else
+            players.add(player);
+    }
+
     public Square addSquare(String squareName, int row, int col, Color color) throws BoardException {
         Square newSquare = new Square(squareName, row, col, color , new Rectangle(90,90));
         squares.add(newSquare);
         return newSquare;
     }
-    public static HashMap<Piece, ArrayList<Square>> recordMoves(Piece piece, Square sourcePosition, Square targetPosition){
+    public HashMap<Piece, ArrayList<Square>> recordMoves(Piece piece, Square sourcePosition, Square targetPosition){
         recordMove.clear();
         ArrayList<Square> sqrs = new ArrayList<>();
         sqrs.add(sourcePosition);
@@ -72,7 +64,7 @@ public class Board {
         sb.append("---------------------------------\n");
         for (int row = 8; row > 0; row --){
             for (int col = 1; col < 9; col++) {
-                for (Square s : Board.getSquares()) {
+                for (Square s : getSquares()) {
                     if (s.getRow() == row && s.getCol() == col) {
                         if (!s.isOccupied())
                             sb.append("| " + "  ");

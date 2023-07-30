@@ -2,7 +2,6 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -92,67 +91,65 @@ public abstract class Piece {
 
 
     // Others ----------------------------------------------------------------------------------------------------------
-    public abstract  ArrayList<Square> possiblePos() throws BoardException;
-    public Square move() throws BoardException {
+    public abstract  ArrayList<Square> possiblePos(Board board) throws BoardException;
+    public Square move(Board board) throws BoardException {
         getCurrentPositionSquare().setOccupied(false);
         Random random = new Random();
         int randomWithinPossibleMove;
-        if (possiblePos().size() > 0)
-            randomWithinPossibleMove = random.nextInt(0, possiblePos().size());
+        if (possiblePos(board).size() > 0)
+            randomWithinPossibleMove = random.nextInt(0, possiblePos(board).size());
         else {
             System.out.println("No position possible for piece");
             return null;
         }
-
-        Square newPositionSquare = possiblePos().get(randomWithinPossibleMove);
-
-
+        Square newPositionSquare = possiblePos(board).get(randomWithinPossibleMove);
         if (newPositionSquare.isOccupied()){
-            captureLogic(newPositionSquare);
+            captureLogic(board, newPositionSquare, newPositionSquare.getPiece());
         }
         newPositionSquare.setPiece(this);
-
         setCurrentPositionSquare(newPositionSquare);
         return newPositionSquare;
     }
-    private void captureLogic(Square newPositionSquare) throws BoardException {
-        Player.getPieces().remove(newPositionSquare.getPiece());
-        newPositionSquare.removePiece(newPositionSquare.getPiece());
-
+    private void captureLogic(Board board, Square newPositionSquare, Piece piece) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            player.getPieces().remove(piece);
+            newPositionSquare.removePiece(piece);
+        }
     }
-    public Square userMove(String userCurrentPosition, String userTargetPosition) throws BoardException {
-        for (Square s : Board.getSquares()){
+
+    public Square userMove(Board board, String userCurrentPosition, String userTargetPosition) throws BoardException {
+        for (Square s : board.getSquares()){
             if (s.getSquareName().equals(userCurrentPosition)){
                 Piece p = s.getPiece();
                 s.setOccupied(false);
                 s.removePiece(p);
-                if (p.possiblePos().size() > 0) {
-                    p.possiblePos().removeIf(sq -> !sq.getSquareName().equals(userTargetPosition));
-                    for (Square newPositionSquare : possiblePos()) {
+                if (p.possiblePos(board).size() > 0) {
+                    p.possiblePos(board).removeIf(sq -> !sq.getSquareName().equals(userTargetPosition));
+                    for (Square newPositionSquare : possiblePos(board)) {
                         if (newPositionSquare.getSquareName().equals(userTargetPosition)) {
                             if (newPositionSquare.isOccupied()) {
-                                captureLogic(newPositionSquare);
+                                captureLogic(board, newPositionSquare, newPositionSquare.getPiece());
                             }
                             if (p instanceof Pawn pawn) {
                                 if (pawn.isEnPassant()){
                                     if (pawn.getEnPassantSquare().equals(newPositionSquare)){
-                                        pawn.checkEnPassant(newPositionSquare);
+                                        pawn.checkEnPassant(board, newPositionSquare);
                                     }
                                 }
                                 if (newPositionSquare.getRow() == 8) {
                                     pawn.pawnTransformationWhite(newPositionSquare);
-                                    Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
+                                    board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
                                     return newPositionSquare;
                                 }
                                 if (newPositionSquare.getRow() == 1) {
                                     pawn.pawnTransformationBlack(newPositionSquare);
-                                    Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
+                                    board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
                                     return newPositionSquare;
                                 }
                             }
                             setCurrentPositionSquare(newPositionSquare);
                             newPositionSquare.setPiece(p);
-                            Board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
+                            board.recordMoves(newPositionSquare.getPiece(), s, newPositionSquare);
                             return newPositionSquare;
                         }
                     }

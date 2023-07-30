@@ -35,9 +35,9 @@ public class King extends Piece{
 
     // Methods ---------------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos() {
+    public ArrayList<Square> possiblePos(Board board) {
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        for (Square square : Board.getSquares()){
+        for (Square square : board.getSquares()){
             for (int i = 1; i <= 1; i++) {
                 if (!square.isOccupied()) {
                     if (square.getRow() == getCurrentPositionSquare().getRow() && square.getCol() == getCurrentPositionSquare().getCol())
@@ -83,134 +83,142 @@ public class King extends Piece{
     }
 
     // Castle White King Side ------------------------------------------------------------------------------------------
-    public void castleWhiteKingSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(56).getPiece();
-        if (!isActivated() && !checkProbeCastleWhiteKingSide() && !rook.isActivated() && !Board.getSquares().get(57).isOccupied()) {
-            Rook.relocateRookCastleWhiteKingSide();
-            userMoveCastleWhiteKingSide();
+    public void castleWhiteKingSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(56).getPiece();
+        if (!isActivated() && !checkProbeCastleWhiteKingSide(board) && !rook.isActivated() && !board.getSquares().get(57).isOccupied()) {
+            Rook.relocateRookCastleWhiteKingSide(board);
+            userMoveCastleWhiteKingSide(board);
         }
     }
-    private boolean checkProbeCastleWhiteKingSide() throws BoardException {
-        for (Piece piece : Player.getPieces()){
-            if (piece.getColor().equals("black")) {
-                for (Square square : piece.possiblePos()) {
-                    if (square.getSquareName().equals("e1") ||
-                            square.getSquareName().equals("f1") ||
-                            square.getSquareName().equals("g1"))
-                        return true;
+    private boolean checkProbeCastleWhiteKingSide(Board board) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            for (Piece piece : player.getPieces()) {
+                if (piece.getColor().equals("black")) {
+                    for (Square square : piece.possiblePos(board)) {
+                        if (square.getSquareName().equals("e1") ||
+                                square.getSquareName().equals("f1") ||
+                                square.getSquareName().equals("g1"))
+                            return true;
+                    }
                 }
             }
         }
         return false;
     }
-    private void userMoveCastleWhiteKingSide() throws BoardException {
-        Piece king = Board.getSquares().get(59).getPiece();
-        Board.getSquares().get(59).setOccupied(false);
-        Board.getSquares().get(59).removePiece(king);
-        king.setCurrentPositionSquare(Board.getSquares().get(57));
-        Board.getSquares().get(57).setPiece(king);
-        Board.recordMoves(king, Board.getSquares().get(59), Board.getSquares().get(57));
+    private void userMoveCastleWhiteKingSide(Board board) throws BoardException {
+        Piece king = board.getSquares().get(59).getPiece();
+        board.getSquares().get(59).setOccupied(false);
+        board.getSquares().get(59).removePiece(king);
+        king.setCurrentPositionSquare(board.getSquares().get(57));
+        board.getSquares().get(57).setPiece(king);
+        board.recordMoves(king, board.getSquares().get(59), board.getSquares().get(57));
     }
 
     // Castle White Queen Side -----------------------------------------------------------------------------------------
-    public void castleWhiteQueenSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(63).getPiece();
-        if (!Board.getSquares().get(61).isOccupied() && !rook.isActivated() && !isActivated() && !checkProbeCastleWhiteQueenSide()) {
-            Rook.relocateRookCastleWhiteQueenSide();
-            userMoveCastleQueenSide();
+    public void castleWhiteQueenSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(63).getPiece();
+        if (!board.getSquares().get(61).isOccupied() && !rook.isActivated() && !isActivated() && !checkProbeCastleWhiteQueenSide(board)) {
+            Rook.relocateRookCastleWhiteQueenSide(board);
+            userMoveCastleQueenSide(board);
         }
     }
-    private boolean checkProbeCastleWhiteQueenSide() throws BoardException {
-        for (Piece piece : Player.getPieces()){
-            if (piece.getColor().equals("black")) {
-                for (Square square : piece.possiblePos()) {
-                    if (square.getSquareName().equals("e1") ||
-                            square.getSquareName().equals("d1") ||
-                            square.getSquareName().equals("c1"))
-                        return true;
+    private boolean checkProbeCastleWhiteQueenSide(Board board) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            for (Piece piece : player.getPieces()) {
+                if (piece.getColor().equals("black")) {
+                    for (Square square : piece.possiblePos(board)) {
+                        if (square.getSquareName().equals("e1") ||
+                                square.getSquareName().equals("d1") ||
+                                square.getSquareName().equals("c1"))
+                            return true;
+                    }
                 }
             }
         }
         return false;
     }
-    private void userMoveCastleQueenSide() throws BoardException {
-        Piece king = Board.getSquares().get(59).getPiece();
+    private void userMoveCastleQueenSide(Board board) throws BoardException {
+        Piece king = board.getSquares().get(59).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
-        setCurrentPositionSquare(Board.getSquares().get(61));
-        Board.getSquares().get(61).setPiece(this);
-        Board.recordMoves(king, Board.getSquares().get(59), Board.getSquares().get(61));
+        setCurrentPositionSquare(board.getSquares().get(61));
+        board.getSquares().get(61).setPiece(this);
+        board.recordMoves(king, board.getSquares().get(59), board.getSquares().get(61));
 
 
     }
 
     // Castle Black King Side ------------------------------------------------------------------------------------------
-    public void castleBlackKingSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(0).getPiece();
-        if (!Board.getSquares().get(2).isOccupied() && !isActivated() && !rook.isActivated() && !checkProbeCastleBlackKingSide()) {
-            Rook.relocateRookCastleBlackKingSide();
-            userMoveCastleBlackKingSide();
+    public void castleBlackKingSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(0).getPiece();
+        if (!board.getSquares().get(2).isOccupied() && !isActivated() && !rook.isActivated() && !checkProbeCastleBlackKingSide(board)) {
+            Rook.relocateRookCastleBlackKingSide(board);
+            userMoveCastleBlackKingSide(board);
         }
     }
-    private boolean checkProbeCastleBlackKingSide() throws BoardException {
-        for (Piece piece : Player.getPieces()){
-            if (piece.getColor().equals("white")) {
-                for (Square square : piece.possiblePos()) {
-                    if (square.getSquareName().equals("e8") ||
-                            square.getSquareName().equals("f8") ||
-                            square.getSquareName().equals("g8"))
-                        return true;
+    private boolean checkProbeCastleBlackKingSide(Board board) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            for (Piece piece : player.getPieces()) {
+                if (piece.getColor().equals("white")) {
+                    for (Square square : piece.possiblePos(board)) {
+                        if (square.getSquareName().equals("e8") ||
+                                square.getSquareName().equals("f8") ||
+                                square.getSquareName().equals("g8"))
+                            return true;
+                    }
                 }
             }
         }
         return false;
     }
-    private void userMoveCastleBlackKingSide() throws BoardException {
-        Piece king = Board.getSquares().get(3).getPiece();
+    private void userMoveCastleBlackKingSide(Board board) throws BoardException {
+        Piece king = board.getSquares().get(3).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
-        setCurrentPositionSquare(Board.getSquares().get(1));
-        Board.getSquares().get(1).setPiece(this);
-        Board.recordMoves(king, Board.getSquares().get(3), Board.getSquares().get(1));
+        setCurrentPositionSquare(board.getSquares().get(1));
+        board.getSquares().get(1).setPiece(this);
+        board.recordMoves(king, board.getSquares().get(3), board.getSquares().get(1));
 
 
 
     }
 
     // Castle Black Queen Side -----------------------------------------------------------------------------------------
-    public void castleBlackQueenSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(7).getPiece();
-        if (!Board.getSquares().get(5).isOccupied() && !isActivated() && !rook.isActivated() && !checkProbeCastleBlackQueenSide()) {
-            Rook.relocateRookCastleBlackQueenSide();
-            userMoveCastleBlackQueenSide();
+    public void castleBlackQueenSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(7).getPiece();
+        if (!board.getSquares().get(5).isOccupied() && !isActivated() && !rook.isActivated() && !checkProbeCastleBlackQueenSide(board)) {
+            Rook.relocateRookCastleBlackQueenSide(board);
+            userMoveCastleBlackQueenSide(board);
         }
     }
-    private boolean checkProbeCastleBlackQueenSide() throws BoardException {
-        for (Piece piece : Player.getPieces()){
-            if (piece.getColor().equals("white")) {
-                for (Square square : piece.possiblePos()) {
-                    if (square.getSquareName().equals("e8") ||
-                            square.getSquareName().equals("d8") ||
-                            square.getSquareName().equals("c8"))
-                        return true;
+    private boolean checkProbeCastleBlackQueenSide(Board board) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            for (Piece piece : player.getPieces()) {
+                if (piece.getColor().equals("white")) {
+                    for (Square square : piece.possiblePos(board)) {
+                        if (square.getSquareName().equals("e8") ||
+                                square.getSquareName().equals("d8") ||
+                                square.getSquareName().equals("c8"))
+                            return true;
+                    }
                 }
             }
         }
         return false;
     }
-    private void userMoveCastleBlackQueenSide() throws BoardException {
-        Piece king = Board.getSquares().get(3).getPiece();
+    private void userMoveCastleBlackQueenSide(Board board) throws BoardException {
+        Piece king = board.getSquares().get(3).getPiece();
         this.getCurrentPositionSquare().setOccupied(false);
-        setCurrentPositionSquare(Board.getSquares().get(5));
-        Board.getSquares().get(5).setPiece(this);
-        Board.recordMoves(king, Board.getSquares().get(3), Board.getSquares().get(5));
+        setCurrentPositionSquare(board.getSquares().get(5));
+        board.getSquares().get(5).setPiece(this);
+        board.recordMoves(king, board.getSquares().get(3), board.getSquares().get(5));
 
 
     }
 
     // Check Probe -----------------------------------------------------------------------------------------------------
-    public boolean checkProbeWhite(Piece king) throws BoardException {
-        for (Square s : Board.getSquares()){
+    public boolean checkProbeWhite(Board board, Piece king) throws BoardException {
+        for (Square s : board.getSquares()){
             if (s.getPiece() != null && s.getPiece().getColor().equals("black")) {
-                for (Square square : s.getPiece().possiblePos()) {
+                for (Square square : s.getPiece().possiblePos(board)) {
                     if (square.getSquareName().equals(king.getCurrentPositionSquare().getSquareName()))
                         return true;
                 }
@@ -218,13 +226,13 @@ public class King extends Piece{
         }
         return false;
     }
-    public boolean checkProbeBlack(Piece king) throws BoardException {
-        for (Square s :Board.getSquares()){
+    public boolean checkProbeBlack(Board board, Piece king) throws BoardException {
+        for (Square s :board.getSquares()){
             if (s.getPiece() != null && s.getPiece().getColor().equals("white")) {
-                for (Square square : s.getPiece().possiblePos()) {
+                for (Square square : s.getPiece().possiblePos(board)) {
                     if (square.getSquareName().equals(king.getCurrentPositionSquare().getSquareName()))
                         return true;
-               }
+                }
             }
         }
         return false;

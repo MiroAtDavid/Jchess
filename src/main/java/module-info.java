@@ -4,5 +4,4 @@ module at.spengergasse.speditionfx {
 
 
     opens at.spengergasse.graphene_POS_T to javafx.fxml;
-    exports at.spengergasse.graphene_POS_T;
 }

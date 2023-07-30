@@ -30,19 +30,19 @@ public class Rook extends Piece {
 
     // Other Methods ---------------------------------------------------------------------------------------------------
     @Override
-    public ArrayList<Square> possiblePos() {
+    public ArrayList<Square> possiblePos(Board board) {
         ArrayList<Square> possibleMoves = new ArrayList<>();
-        possibleMoves.addAll(possibleNorth());
-        possibleMoves.addAll(possibleSouth());
-        possibleMoves.addAll(possibleEast());
-        possibleMoves.addAll(possibleWest());
+        possibleMoves.addAll(possibleNorth(board));
+        possibleMoves.addAll(possibleSouth(board));
+        possibleMoves.addAll(possibleEast(board));
+        possibleMoves.addAll(possibleWest(board));
         return possibleMoves;
     }
-    public ArrayList<Square> possibleNorth(){
+    public ArrayList<Square> possibleNorth(Board board){
         ArrayList<Square> norhtList = new ArrayList<>();
         outerloop:
         for (int i = 1; i < 8; i++){
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() + i == getCurrentPositionSquare().getRow()) {
                         if (!square.isOccupied()){
@@ -59,11 +59,11 @@ public class Rook extends Piece {
         }
         return norhtList;
     }
-    public ArrayList<Square> possibleSouth(){
+    public ArrayList<Square> possibleSouth(Board board){
         ArrayList<Square> southList = new ArrayList<>();
         outerloop:
         for (int i = 1; i < 8; i++){
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() - i == getCurrentPositionSquare().getRow()) {
                         if (!square.isOccupied()){
@@ -81,11 +81,11 @@ public class Rook extends Piece {
 
         return southList;
     }
-    public ArrayList<Square> possibleEast(){
+    public ArrayList<Square> possibleEast(Board board){
         ArrayList<Square> eastList = new ArrayList<>();
         outerloop:
         for (int i = 1; i < 8; i++){
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getRow() == getCurrentPositionSquare().getRow()) {
                     if (square.getCol() + i == getCurrentPositionSquare().getCol()) {
                         if (!square.isOccupied()){
@@ -102,11 +102,11 @@ public class Rook extends Piece {
         }
         return eastList;
     }
-    public ArrayList<Square> possibleWest(){
+    public ArrayList<Square> possibleWest(Board board){
         ArrayList<Square> westList = new ArrayList<>();
         outerloop:
         for (int i = 1; i < 8; i++){
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getRow() == getCurrentPositionSquare().getRow()) {
                     if (square.getCol() - i == getCurrentPositionSquare().getCol()) {
                         if (!square.isOccupied()){
@@ -125,10 +125,10 @@ public class Rook extends Piece {
     }
 
     // Castling Logic --------------------------------------------------------------------------------------------------
-    static void relocateRookCastleWhiteKingSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(56).getPiece();
+    static void relocateRookCastleWhiteKingSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(56).getPiece();
         if (!rook.isActivated()) {
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getSquareName().equals("h1")) {
                     square.setOccupied(false);
                 }
@@ -142,14 +142,14 @@ public class Rook extends Piece {
             System.out.println("Rook is activated");
         }
     }
-    static void relocateRookCastleWhiteQueenSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(63).getPiece();
+    static void relocateRookCastleWhiteQueenSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(63).getPiece();
         if (!rook.isActivated()) {
-            for (Square square : Board.getSquares()) {
-                if (Board.getSquares().get(63).equals(square)) {
+            for (Square square : board.getSquares()) {
+                if (board.getSquares().get(63).equals(square)) {
                     square.setOccupied(false);
                 }
-                if (Board.getSquares().get(60).equals(square)) {
+                if (board.getSquares().get(60).equals(square)) {
                     square.setPiece(rook);
                     square.setOccupied(true);
                     rook.setCurrentPositionSquare(square);
@@ -157,10 +157,10 @@ public class Rook extends Piece {
             }
         }
     }
-    static void relocateRookCastleBlackKingSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(0).getPiece();
+    static void relocateRookCastleBlackKingSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(0).getPiece();
         if (!rook.isActivated()) {
-            for (Square square : Board.getSquares()) {
+            for (Square square : board.getSquares()) {
                 if (square.getSquareName().equals("h8")) {
                     square.setOccupied(false);
                 }
@@ -172,14 +172,14 @@ public class Rook extends Piece {
             }
         }
     }
-    static void relocateRookCastleBlackQueenSide() throws BoardException {
-        Rook rook = (Rook) Board.getSquares().get(7).getPiece();
+    static void relocateRookCastleBlackQueenSide(Board board) throws BoardException {
+        Rook rook = (Rook) board.getSquares().get(7).getPiece();
         if (!rook.isActivated()) {
-            for (Square square : Board.getSquares()) {
-                if (Board.getSquares().get(7).equals(square)) {
+            for (Square square : board.getSquares()) {
+                if (board.getSquares().get(7).equals(square)) {
                     square.setOccupied(false);
                 }
-                if (Board.getSquares().get(4).equals(square)) {
+                if (board.getSquares().get(4).equals(square)) {
                     square.setPiece(rook);
                     square.setOccupied(true);
                     rook.setCurrentPositionSquare(square);
@@ -188,4 +188,3 @@ public class Rook extends Piece {
         }
     }
 }
-

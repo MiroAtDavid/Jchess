@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private static ArrayList<Piece> pieces;
+    private ArrayList<Piece> pieces;
     private int strength;
     private String color;
 
@@ -28,7 +28,7 @@ public class Player {
     public String getColor() {
         return color;
     }
-    public static ArrayList<Piece> getPieces() {
+    public ArrayList<Piece> getPieces() {
         return pieces;
     }
 
@@ -43,14 +43,17 @@ public class Player {
             throw new BoardException("Player - setName: null");
     }
     public void setStrength(int strength) throws BoardException {
+        Board board = TestBoard.initBoard();
         if (strength > Integer.MIN_VALUE && strength < Integer.MAX_VALUE) {
-            for (Piece p : Player.getPieces()) {
-                strength += p.getPieceValue();
+            for (Player player : board.getPlayers()) {
+                for (Piece p : player.getPieces()) {
+                    strength += p.getPieceValue();
+                }
+                this.strength = strength;
             }
-            this.strength = strength;
-        } else {
-            throw new BoardException("Player - setName(): int value");
-        }
+            } else{
+                throw new BoardException("Player - setName(): int value");
+            }
 
     }
     public void setColor(String color) throws BoardException {
@@ -63,4 +66,3 @@ public class Player {
     // Other -----------------------------------------------------------------------------------------------------------
 
 }
-
