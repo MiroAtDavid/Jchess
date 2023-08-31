@@ -3,10 +3,13 @@ package model;
 import java.util.ArrayList;
 
 public class Player {
+
     private String name;
     private ArrayList<Piece> pieces;
     private int strength;
     private String color;
+    private boolean checkMate;
+    private boolean check;
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
 
@@ -15,33 +18,54 @@ public class Player {
         this.pieces = pieces;
         this.strength = strength;
         this.color = color;
+        setCheckMate(false);
+        setCheck(false);
     }
-
     // Getter ----------------------------------------------------------------------------------------------------------
 
+    public boolean isCheck() {
+        return check;
+    }
+
+    public boolean isCheckMate() {
+        return checkMate;
+    }
     public String getName() {
         return name;
     }
+
     public int getStrength() {
         return strength;
     }
+
     public String getColor() {
         return color;
     }
+
     public ArrayList<Piece> getPieces() {
         return pieces;
     }
 
     // Setter ----------------------------------------------------------------------------------------------------------
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+    public void setCheckMate(boolean checkMate) {
+        this.checkMate = checkMate;
+    }
+
     public void setPieces(ArrayList<Piece> pieces) {
         this.pieces = pieces;
     }
+
     public void setName(String name) throws BoardException {
         if (name != null)
             this.name = name;
         else
             throw new BoardException("Player - setName: null");
     }
+
     public void setStrength(int strength) throws BoardException {
         Board board = TestBoard.initBoard();
         if (strength > Integer.MIN_VALUE && strength < Integer.MAX_VALUE) {
@@ -51,18 +75,15 @@ public class Player {
                 }
                 this.strength = strength;
             }
-            } else{
-                throw new BoardException("Player - setName(): int value");
-            }
-
+        } else{
+            throw new BoardException("Player - setName(): int value");
+        }
     }
+
     public void setColor(String color) throws BoardException {
         if (color != null)
             this.color = color;
         else
             throw new BoardException("Player - setColor(): String null");
     }
-
-    // Other -----------------------------------------------------------------------------------------------------------
-
 }

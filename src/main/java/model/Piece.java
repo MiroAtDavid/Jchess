@@ -7,6 +7,7 @@ import java.util.Random;
 
 
 public abstract class Piece {
+
     private String pieceName;
     private int pieceValue;
     private Square currentPositionSquare;
@@ -31,43 +32,49 @@ public abstract class Piece {
     }
 
     // Getter ----------------------------------------------------------------------------------------------------------
-
     public String getColor() {
         return color;
     }
+
     public String getPieceName() {
         return pieceName;
     }
+
     public int getPieceValue() {
         return pieceValue;
     }
+
     public Square getCurrentPositionSquare() {
         return currentPositionSquare;
     }
+
     public Image getImage(){
         return image;
     }
+
     public ImageView getImageView(){
         return imageView;
     }
 
     // Setter ----------------------------------------------------------------------------------------------------------
-
     public void setColor(String color) {
         this.color = color;
     }
+
     public void setPieceName(String pieceName) throws BoardException {
         if (pieceName != null)
             this.pieceName = pieceName;
         else
             throw new BoardException("Piece - setName: null");
     }
+
     public void setPieceValue(int pieceValue) throws BoardException {
         if (pieceValue > Integer.MIN_VALUE & pieceValue < Integer.MAX_VALUE)
             this.pieceValue = pieceValue;
         else
             throw new BoardException("Piece - setValue(): int range");
     }
+
     public void setCurrentPositionSquare(Square currentPositionSquare) throws BoardException {
         if (currentPositionSquare != null) {
             currentPositionSquare.setPiece(this);
@@ -76,12 +83,14 @@ public abstract class Piece {
         } else
             throw new BoardException("Piece - setPos(): position square null");
     }
+
     public void setImage(Image image) throws BoardException {
         if (image != null)
             this.image = image;
         else
             throw new BoardException("Piece setImage()");
     }
+
     public void setImageView(ImageView imageView) throws BoardException {
         if (imageView != null)
             this.imageView = imageView;
@@ -89,10 +98,17 @@ public abstract class Piece {
             throw new BoardException("Piece - setImageView(): imageView null");
     }
 
-
     // Others ----------------------------------------------------------------------------------------------------------
     public abstract  ArrayList<Square> possiblePos(Board board) throws BoardException;
+
+    public ArrayList<Square> checkPossiblePos(Board board) throws BoardException {
+        return possiblePos(board);
+    }
+
     public Square move(Board board) throws BoardException {
+        Square sqr = getCurrentPositionSquare();
+        Piece p = getCurrentPositionSquare().getPiece();
+
         getCurrentPositionSquare().setOccupied(false);
         Random random = new Random();
         int randomWithinPossibleMove;
@@ -100,21 +116,37 @@ public abstract class Piece {
             randomWithinPossibleMove = random.nextInt(0, possiblePos(board).size());
         else {
             System.out.println("No position possible for piece");
+            getCurrentPositionSquare().setOccupied(true);
             return null;
+
         }
         Square newPositionSquare = possiblePos(board).get(randomWithinPossibleMove);
-        if (newPositionSquare.isOccupied()){
+        Piece piece = newPositionSquare.getPiece();;
+        if (newPositionSquare.isOccupied()) {
             captureLogic(board, newPositionSquare, newPositionSquare.getPiece());
         }
+            if (p instanceof Pawn pawn) {
+                if (pawn.isEnPassant()){
+                    if (pawn.getEnPassantSquare().equals(newPositionSquare)){
+                        pawn.checkEnPassant(board, newPositionSquare);
+                    }
+                }
+                if (newPositionSquare.getRow() == 8) {
+                    pawn.pawnTransformationWhite(newPositionSquare);
+                    captureLogic(board, newPositionSquare, piece);
+                    return newPositionSquare;
+                }
+                if (newPositionSquare.getRow() == 1) {
+                    pawn.pawnTransformationBlack(newPositionSquare);
+                    captureLogic(board, newPositionSquare, piece);
+                    return newPositionSquare;
+                }
+            }
+
         newPositionSquare.setPiece(this);
         setCurrentPositionSquare(newPositionSquare);
+        board.recordMoves(newPositionSquare.getPiece(),sqr , newPositionSquare);
         return newPositionSquare;
-    }
-    private void captureLogic(Board board, Square newPositionSquare, Piece piece) throws BoardException {
-        for (Player player : board.getPlayers()) {
-            player.getPieces().remove(piece);
-            newPositionSquare.removePiece(piece);
-        }
     }
 
     public Square userMove(Board board, String userCurrentPosition, String userTargetPosition) throws BoardException {
@@ -161,6 +193,10 @@ public abstract class Piece {
         return null;
     }
 
-
-
+    private void captureLogic(Board board, Square newPositionSquare, Piece piece) throws BoardException {
+        for (Player player : board.getPlayers()) {
+            player.getPieces().remove(piece);
+            newPositionSquare.removePiece(piece);
+        }
+    }
 }

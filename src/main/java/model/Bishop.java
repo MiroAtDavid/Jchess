@@ -26,6 +26,7 @@ public class Bishop extends Piece {
         return possibleMoves;
 
     }
+
     public ArrayList<Square> possibleNorthWest(Board board){
         ArrayList<Square> northWestList = new ArrayList<>();
         outerloop:
@@ -45,6 +46,7 @@ public class Bishop extends Piece {
         }
         return northWestList;
     }
+
     public ArrayList<Square> possibleNorthEast(Board board){
         ArrayList<Square> northEastList = new ArrayList<>();
         outerloop:
@@ -64,6 +66,7 @@ public class Bishop extends Piece {
         }
         return northEastList;
     }
+
     public ArrayList<Square> possibleSouthWest(Board board){
         ArrayList<Square> southWestList = new ArrayList<>();
         outerloop:
@@ -83,6 +86,7 @@ public class Bishop extends Piece {
         }
         return southWestList;
     }
+
     public ArrayList<Square> possibleSouthEast(Board board) {
         ArrayList<Square> southEastList = new ArrayList<>();
         outerloop:
@@ -102,5 +106,4 @@ public class Bishop extends Piece {
         }
         return southEastList;
     }
-
 }

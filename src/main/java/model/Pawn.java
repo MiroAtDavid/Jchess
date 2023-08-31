@@ -10,9 +10,9 @@ import java.util.Scanner;
 import static model.TestBoard.*;
 
 public class Pawn extends Piece {
+
     private boolean enPassant;
     private Square enPassantSquare;
-
 
     // Konstruktor -----------------------------------------------------------------------------------------------------
     public Pawn(String pieceName, int pieceValue, Square currentPositionSquare, ImageView imageView, Image image) throws BoardException {
@@ -26,19 +26,19 @@ public class Pawn extends Piece {
         setEnPassant(false);
     }
     // Getter ----------------------------------------------------------------------------------------------------------
-
     public boolean isEnPassant() {
         return enPassant;
     }
+
     public Square getEnPassantSquare() {
         return enPassantSquare;
     }
 
     // Setter ----------------------------------------------------------------------------------------------------------
-
     public void setEnPassant(boolean enPassant) {
         this.enPassant = enPassant;
     }
+
     public void setEnPassantSquare(Square enPassantSquare) {
         this.enPassantSquare = enPassantSquare;
     }
@@ -53,6 +53,7 @@ public class Pawn extends Piece {
             possibleMoves.addAll(possibleSouth(board));
         return possibleMoves;
     }
+
     public ArrayList<Square> possibleNorth(Board board) {
         ArrayList<Square> northList = new ArrayList<>();
         for (Square square : board.getSquares()) {
@@ -104,6 +105,7 @@ public class Pawn extends Piece {
         }
         return northList;
     }
+
     public ArrayList<Square> possibleSouth(Board board){
         ArrayList<Square> southList = new ArrayList<>();
         for (Square square : board.getSquares()){
@@ -155,6 +157,7 @@ public class Pawn extends Piece {
         }
         return southList;
     }
+
     public void checkEnPassant(Board board, Square sq) throws BoardException {
         sq.setOccupied(true);
         Collection<ArrayList<Square>> squaresArray = board.recordMove.values();
@@ -179,6 +182,7 @@ public class Pawn extends Piece {
             newPositionSquare.setOccupied(false);
         }
     }
+
     public void pawnTransformationWhite(Square transformationSquare) throws BoardException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Q for ♛ - R for ♜ - B for ♝ - K for ♞: ");
@@ -191,6 +195,7 @@ public class Pawn extends Piece {
         }
         transformationSquare.setOccupied(true);
     }
+
     public void pawnTransformationBlack(Square transformationSquare) throws BoardException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Q for ♕ - R for ♖ - B for ♗ - K for ♘: ");
@@ -203,5 +208,4 @@ public class Pawn extends Piece {
         }
         transformationSquare.setOccupied(true);
     }
-
 }

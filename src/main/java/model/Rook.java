@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class Rook extends Piece {
+
     private boolean activated;
 
     // Konsturktor -----------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ public class Rook extends Piece {
         possibleMoves.addAll(possibleWest(board));
         return possibleMoves;
     }
+
     public ArrayList<Square> possibleNorth(Board board){
         ArrayList<Square> norhtList = new ArrayList<>();
         outerloop:
@@ -59,6 +61,7 @@ public class Rook extends Piece {
         }
         return norhtList;
     }
+
     public ArrayList<Square> possibleSouth(Board board){
         ArrayList<Square> southList = new ArrayList<>();
         outerloop:
@@ -78,9 +81,9 @@ public class Rook extends Piece {
                 }
             }
         }
-
         return southList;
     }
+
     public ArrayList<Square> possibleEast(Board board){
         ArrayList<Square> eastList = new ArrayList<>();
         outerloop:
@@ -102,6 +105,7 @@ public class Rook extends Piece {
         }
         return eastList;
     }
+
     public ArrayList<Square> possibleWest(Board board){
         ArrayList<Square> westList = new ArrayList<>();
         outerloop:
@@ -142,6 +146,7 @@ public class Rook extends Piece {
             System.out.println("Rook is activated");
         }
     }
+
     static void relocateRookCastleWhiteQueenSide(Board board) throws BoardException {
         Rook rook = (Rook) board.getSquares().get(63).getPiece();
         if (!rook.isActivated()) {
@@ -157,6 +162,7 @@ public class Rook extends Piece {
             }
         }
     }
+
     static void relocateRookCastleBlackKingSide(Board board) throws BoardException {
         Rook rook = (Rook) board.getSquares().get(0).getPiece();
         if (!rook.isActivated()) {
@@ -172,6 +178,7 @@ public class Rook extends Piece {
             }
         }
     }
+
     static void relocateRookCastleBlackQueenSide(Board board) throws BoardException {
         Rook rook = (Rook) board.getSquares().get(7).getPiece();
         if (!rook.isActivated()) {
