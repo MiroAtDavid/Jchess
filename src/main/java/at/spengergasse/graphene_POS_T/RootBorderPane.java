@@ -34,198 +34,198 @@
 //	private Board chessboard = TestBoard.initBoard();
 //	private Player playerOne, playerTwo;
 //	private ArrayList<Piece> p1Piece, p2Piece;
-//
+
 //	final Knight knightw = new Knight("Knight",
 //			3,
-//			Board.getSquares().get(62),
+//			chessboard.getSquares().get(62),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("knight.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("knight.png")))
 //	);
 //	final Knight knightw2 = new Knight("Knight",
 //			3,
-//			Board.getSquares().get(57),
+//			chessboard.getSquares().get(57),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("knight.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("knight.png")))
 //	);
 //
 //	final Bishop bishopw = new Bishop("Bishop",
 //			3,
-//			Board.getSquares().get(61),
+//			chessboard.getSquares().get(61),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bishop.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bishop.png")))
 //	);
 //	final Bishop bishopw2 =new Bishop("Bishop",
 //			3,
-//			Board.getSquares().get(58),
+//			chessboard.getSquares().get(58),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bishop.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bishop.png")))
 //	);
 //	final Rook rookw = new Rook("Bishop",
 //			4,
-//			Board.getSquares().get(63),
+//			chessboard.getSquares().get(63),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("rook.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("rook.png")))
 //	);
 //	final Rook rookw2 = new Rook("Bishop",
 //			4,
-//			Board.getSquares().get(56),
+//			chessboard.getSquares().get(56),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("rook.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("rook.png")))
 //	);
 //	final Qeen queenw = new Qeen("Qeen",
 //			8,
-//			Board.getSquares().get(60),
+//			chessboard.getSquares().get(60),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("queen.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("queen.png")))
 //	);
 //	final King kingw = new King("King",
 //			100,
-//			Board.getSquares().get(59),
+//			chessboard.getSquares().get(59),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("king.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("king.png")))
 //	);
 //	final Pawn pawnW1 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(55),
+//			chessboard.getSquares().get(55),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW2 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(54),
+//			chessboard.getSquares().get(54),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW3 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(53),
+//			chessboard.getSquares().get(53),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW4 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(52),
+//			chessboard.getSquares().get(52),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW5 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(51),
+//			chessboard.getSquares().get(51),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW6 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(50),
+//			chessboard.getSquares().get(50),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW7 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(49),
+//			chessboard.getSquares().get(49),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //	final Pawn pawnW8 =  new Pawn("Pawn",
 //			1,
-//			Board.getSquares().get(48),
+//			chessboard.getSquares().get(48),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("pawn.png")))
 //	);
 //
 //	final Knight knightB = new Knight("Black Knight",
 //			3,
-//			Board.getSquares().get(6),
+//			chessboard.getSquares().get(6),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bknight.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bknight.png")))
 //	);
 //	final Knight knightB2 = new Knight("Black Knight",
 //			3,
-//			Board.getSquares().get(1),
+//			chessboard.getSquares().get(1),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bknight.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bknight.png")))
 //	);
 //	final Bishop bishopB = new Bishop("Black Bishop",
 //			3,
-//			Board.getSquares().get(5),
+//			chessboard.getSquares().get(5),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))
 //	);
 //	final Bishop bishopB2 = new Bishop("Black Bishop",
 //			3,
-//			Board.getSquares().get(2),
+//			chessboard.getSquares().get(2),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))
 //	);
 //	final Rook rookB = new Rook("Black Bishop",
 //			4,
-//			Board.getSquares().get(7),
+//			chessboard.getSquares().get(7),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("brook.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))
 //	);
 //	final Rook rookB2 = new Rook("Black Bishop",
 //			4,
-//			Board.getSquares().get(0),
+//			chessboard.getSquares().get(0),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("brook.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))
 //	);
 //	final Qeen queenB = new Qeen("Black Qeen",
 //			8,
-//			Board.getSquares().get(4),
+//			chessboard.getSquares().get(4),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bqueen.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bbishop.png")))
 //	);
 //	final King kingB = new King("Black King",
 //			100,
-//			Board.getSquares().get(3),
+//			chessboard.getSquares().get(3),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bking.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bking.png")))
 //	);
 //	final Pawn pawnB1 = new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(15),
+//			chessboard.getSquares().get(15),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //
 //	final Pawn pawnB2 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(14),
+//			chessboard.getSquares().get(14),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //	final Pawn pawnB3 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(13),
+//			chessboard.getSquares().get(13),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //	final Pawn pawnB4 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(12),
+//			chessboard.getSquares().get(12),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png"))));
 //	final Pawn pawnB5 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(11),
+//			chessboard.getSquares().get(11),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //	final Pawn pawnB6 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(10),
+//			chessboard.getSquares().get(10),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //	final Pawn pawnB7 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(9),
+//			chessboard.getSquares().get(9),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
 //	final Pawn pawnB8 =  new Pawn("Black Pawn",
 //			1,
-//			Board.getSquares().get(8),
+//			chessboard.getSquares().get(8),
 //			new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))),
 //			new Image(Objects.requireNonNull(getClass().getResourceAsStream("bpawn.png")))
 //	);
@@ -242,10 +242,10 @@
 //
 //		playerOne.setPieces(p1Piece);
 //		playerTwo.setPieces(p2Piece);
-//
-//
-//
-//		//Board board = new Board();
+
+
+
+		//Board board = new Board();
 //		flowPanetop = new FlowPane();
 //			flowPanetop.setMinHeight(100);
 //		vBoxLeft = new VBox();
@@ -258,7 +258,7 @@
 //
 //		buttonMove = new Button("move");
 //		vBoxRight.getChildren().add(buttonMove);
-//
+
 //		addPlayerOneList(knightw2);
 //		addPlayerOneList(knightw);
 //		addPlayerOneList(bishopw);
@@ -316,7 +316,7 @@
 //			}
 //		});
 //	}
-//
+
 //	public void addPlayerOneList(Piece piece){
 //		if (!piece.getPieceName().contains("B"))
 //			p1Piece.add(piece);
@@ -438,7 +438,7 @@
 //	}
 //
 //	public void move(Piece piece) throws BoardException {
-//		ArrayList<Square> moveNew = piece.possiblePos();
+//		ArrayList<Square> moveNew = piece.possiblePos(chessboard);
 //		Square aktuell = piece.getCurrentPositionSquare();
 //		Square k = moveNew.get(0);
 //		piece.setCurrentPositionSquare(k);
@@ -446,11 +446,11 @@
 //		System.out.println(piece.getCurrentPositionSquare().getSquareName());
 //		groupChessBoard.getChildren().remove(piece.getImageView());
 //		drawthis(piece);
-//		piece.possiblePos().clear();
+//		piece.possiblePos(chessboard).clear();
 //	}
-//
+
 //}
-//
-//
-//
-//
+
+
+
+

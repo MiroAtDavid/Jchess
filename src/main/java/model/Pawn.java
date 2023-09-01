@@ -55,14 +55,22 @@ public class Pawn extends Piece {
     }
 
     public ArrayList<Square> possibleNorth(Board board) {
+        boolean thirdRowOccupied = false;
         ArrayList<Square> northList = new ArrayList<>();
-        for (Square square : board.getSquares()) {
-            if (!square.isOccupied()) {
+        for (Square sq : board.getSquares()){
+            if (sq.getCol() == getCurrentPositionSquare().getCol()) {
+                if (sq.isOccupied() && sq.getRow() == 3) {
+                    thirdRowOccupied = true;
+                }
+            }
+        }
+        for (Square square : board.getSquares()){
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
-                    if (square.getRow() == getCurrentPositionSquare().getRow() + 1) {
+                    if (!square.isOccupied()) {
+                        if (square.getRow() == getCurrentPositionSquare().getRow() + 1) {
                         northList.add(square);
                     }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && getCurrentPositionSquare().getRow() == 2) {
+                    if (square.getRow() == getCurrentPositionSquare().getRow() + 2 && getCurrentPositionSquare().getRow() == 2 && !thirdRowOccupied) {
                         northList.add(square);
                     }
                 }
@@ -107,14 +115,22 @@ public class Pawn extends Piece {
     }
 
     public ArrayList<Square> possibleSouth(Board board){
+        boolean sixthRowOccupied = false;
         ArrayList<Square> southList = new ArrayList<>();
+        for (Square sq : board.getSquares()){
+            if (sq.getCol() == getCurrentPositionSquare().getCol()) {
+                if (sq.isOccupied() && sq.getRow() == 6) {
+                    sixthRowOccupied = true;
+                }
+            }
+        }
         for (Square square : board.getSquares()){
             if (!square.isOccupied()) {
                 if (square.getCol() == getCurrentPositionSquare().getCol()) {
                     if (square.getRow() == getCurrentPositionSquare().getRow() - 1) {
                         southList.add(square);
                     }
-                    if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && getCurrentPositionSquare().getRow() == 7) {
+                    if (square.getRow() == getCurrentPositionSquare().getRow() - 2 && getCurrentPositionSquare().getRow() == 7 && !sixthRowOccupied) {
                         southList.add(square);
                     }
                 }
