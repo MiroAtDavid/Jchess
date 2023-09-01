@@ -13,13 +13,13 @@ Runs only in java console for now. WIP
 ---------------------------------
 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
 ---------------------------------
-|&nbsp;&emsp;&nbsp;|&nbsp;&ensp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&ensp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&ensp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&ensp;&nbsp;|
+
 ---------------------------------
-|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|
+
 ---------------------------------
-|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|
+
 ---------------------------------
-|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|&nbsp;&emsp;&nbsp;|
+
 ---------------------------------
 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
 ---------------------------------
