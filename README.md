@@ -1,4 +1,4 @@
-# Graphene_Chess
+# Jchess
 
 ## WIP
 
